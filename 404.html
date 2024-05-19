@@ -1,0 +1,181 @@
+<!Doctype HTML>
+<html>
+<head>
+<title>Error 404</title>
+<link rel="icon" href="lcorplogo.jpg" type="image/icon type">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+body{ 
+  display: flex;
+  width: 100vw;
+  height: 20vh;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-size: 96px;
+  font-family: 'Audiowide', Audiowide;
+  letter-spacing: -7px;
+}
+
+div{
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
+div:before,
+div:after{
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+div:before{
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+
+div:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
+</style>
+<head>
+<body>
+
+<div title="404">404</div>
+
+<script>
+var canvas = document.body.appendChild( document.createElement( 'canvas' ) ),
+    context = canvas.getContext( '2d' );
+context.globalCompositeOperation = 'lighter';
+canvas.width = 1050;
+canvas.height = 1250;
+draw();
+
+var textStrip = ['1', '0', '1', '0', '1', '0', '1', '0', '1', '0', '1', '0', '1'];
+
+var stripCount = 60, stripX = new Array(), stripY = new Array(), dY = new Array(), stripFontSize = new Array();
+
+for (var i = 0; i < stripCount; i++) {
+    stripX[i] = Math.floor(Math.random()*1265);
+    stripY[i] = -100;
+    dY[i] = Math.floor(Math.random()*7)+3;
+    stripFontSize[i] = Math.floor(Math.random()*16)+8;
+}
+
+var theColors = ['#cefbe4', '#81ec72', '#5cd646', '#54d13c', '#4ccc32', '#43c728'];
+
+var elem, context, timer;
+
+function drawStrip(x, y) {
+    for (var k = 0; k <= 20; k++) {
+        var randChar = textStrip[Math.floor(Math.random()*textStrip.length)];
+        if (context.fillText) {
+            switch (k) {
+            case 0:
+                context.fillStyle = theColors[0]; break;
+            case 1:
+                context.fillStyle = theColors[1]; break;
+            case 3:
+                context.fillStyle = theColors[2]; break;
+            case 7:
+                context.fillStyle = theColors[3]; break;
+            case 13:
+                context.fillStyle = theColors[4]; break;
+            case 17:
+                context.fillStyle = theColors[5]; break;
+            }
+            context.fillText(randChar, x, y);
+        }
+        y -= stripFontSize[k];
+    }
+}
+
+function draw() {
+    // clear the canvas and set the properties
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.shadowOffsetX = context.shadowOffsetY = 0;
+    context.shadowBlur = 8;
+    context.shadowColor = '#94f475';
+    
+    for (var j = 0; j < stripCount; j++) {
+        context.font = stripFontSize[j]+'px MatrixCode';
+        context.textBaseline = 'top';
+        context.textAlign = 'center';
+        
+        if (stripY[j] > 1358) {
+            stripX[j] = Math.floor(Math.random()*canvas.width);
+            stripY[j] = -100;
+            dY[j] = Math.floor(Math.random()*7)+3;
+            stripFontSize[j] = Math.floor(Math.random()*16)+8;
+            drawStrip(stripX[j], stripY[j]);
+        } else drawStrip(stripX[j], stripY[j]);
+        
+        stripY[j] += dY[j];
+    }
+  setTimeout(draw, 70);
+}
+</script>
+<script>
+
+  document.onkeydown = function(e) {
+    if(e.keyCode == 123) {
+     return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+     return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+     return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+     return false;
+    }
+
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){
+     return false;
+    }      
+ }
+
+</script>
+</body>
+</html>

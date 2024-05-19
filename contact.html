@@ -1,0 +1,261 @@
+
+<!Doctype HTML>
+<html>
+<head>
+<title>Contact L Corp</title>
+<link rel="icon" href="lcorplogo.jpg" type="image/icon type">
+<style>
+ body {
+  background-image: url("contactbanner1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #000;
+} 
+.textboxbody1 {
+    background-color: #000;
+    color: #fff;
+    opacity: 69%;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-opacity: 100%;
+    padding-top: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 2%;
+}
+h1,h2 {
+  font-family: 'Mylodon-Light', sans-serif;
+  padding: 1em 2em;
+  font-size: 50px;
+  color: #ffffff;
+  font-weight: 400;
+  margin: 0.4em 0;
+}
+h1 { font-size: 4em; }
+h2 {
+  color: #ffffff;
+  font-size: 3em;
+}
+@font-face {
+    font-family: Mylodon-Light;
+    font-weight: bold;
+    src: url("Mylodon-Light.otf") format("opentype");
+}
+</style>
+<link rel="stylesheet" href="pagestyles.css">
+<link rel="stylesheet" href="navbar.js">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+<main>
+<nav class="nav">
+<div class="container">
+ <div class="logo">
+<img src="lcorplogo.jpg" style="width: 90px;height:60px;">
+</div>
+<div id="mainListDiv" class="main_list">
+<ul class="navlinks">
+<li><a href="index.html">Home</a></li>
+<li><a href="articles.html">Articles</a></li>
+<li><a href="aboutus.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="subcompanies.html">Others</a></li>
+</ul>
+</div>
+<span class="navTrigger">
+<i></i>
+<i></i>
+<i></i>
+</span>
+</div>
+</nav>
+<!-- <section class="home">
+</section> -->
+<div style="height: 100%">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+<center><big><big><big><big><big><h1>
+  <span
+     class="txt-rotate"
+     data-period="2000"
+     data-rotate='[ "Contact us at", "lcorp@usa.com" ]'></span>
+</h1></big></big></big></big></big>
+<h2>For futher inquiries and other questions</h2></center>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</main>
+<div class="footer" style="background-color:black;">
+<div class="contain">
+<div class="col">
+<h1>Company</h1>
+<ul>
+<li>Home</li>
+<li>Articles</li>
+<li>About</li>
+<li>Contact Us</li>
+<li>Others</li>
+</ul>
+</div>
+<div class="col">
+<h1>Articles</h1>
+<ul>
+<li>Articles Page</li>
+<li>Get in touch</li>
+</ul>
+</div>
+<div class="col">
+<h1>Sub Companies</h1>
+<ul>
+<li>Sub Company List</li>
+<li>Contact Us</li>
+</ul>
+</div>
+<div class="col">
+<h1>Contact</h1>
+<ul>
+<li>Email</li>
+<li>Discord</li>
+<li>Social</li>
+</ul>
+</div>
+<div class="col social">
+<h1>L Corp</h1>
+<ul>
+<li><img src="lcorplogo.jpg" width="50" style="width: 50px;"></li>
+</ul>
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="js/scripts.js"></script>
+<script>
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > 50) {
+                $('.nav').addClass('affix');
+                console.log("OK");
+            } else {
+                $('.nav').removeClass('affix');
+            }
+        });
+  var TxtRotate = function(el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 2000;
+  this.txt = '';
+  this.tick();
+  this.isDeleting = false;
+};
+
+TxtRotate.prototype.tick = function() {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+  var that = this;
+  var delta = 300 - Math.random() * 100;
+
+  if (this.isDeleting) { delta /= 2; }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === '') {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
+  }
+
+  setTimeout(function() {
+    that.tick();
+  }, delta);
+};
+
+window.onload = function() {
+  var elements = document.getElementsByClassName('txt-rotate');
+  for (var i=0; i<elements.length; i++) {
+    var toRotate = elements[i].getAttribute('data-rotate');
+    var period = elements[i].getAttribute('data-period');
+    if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+  // INJECT CSS
+  var css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+  document.body.appendChild(css);
+};
+</script>
+<script>
+
+  document.onkeydown = function(e) {
+    if(e.keyCode == 123) {
+     return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+     return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+     return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+     return false;
+    }
+
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){
+     return false;
+    }      
+ }
+
+</script>
+</body>
+</html>

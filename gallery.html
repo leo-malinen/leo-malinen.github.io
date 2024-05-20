@@ -4,7 +4,151 @@
 <title>Our SubCompanies and Partners</title>
 <link rel="icon" href="githublogo.png" type="image/icon type">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+  --scale: 0.1;
+  --space: 8vmin;
+  --font-primary: 'Lato', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+}
+
+@media (prefers-reduced-motion) {
+  :root {
+    --scale: 0;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: hsl(0, 0%, 95%);
+  background-color: hsl(5, 15%, 5%);
+  font-size: clamp(1.2rem, 5vw, 1.5rem);
+  font-family: var(--font-primary);
+  line-height: 1.6;
+}
+
+a {
+  color: hsl(65, 80%, 60%);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+.page-title {
+  text-align: center;
+}
+
+.page-title::after {
+  content: '↓';
+  display: block;
+  font-size: 2em;
+  opacity: 0;
+  transform: translateY(-24px);
+  animation: fadein 800ms 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.header,
+.footer {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.section {
+  transform-origin: center top;
+  transform: scaleY(calc(1 - var(--scale)));
+}
+
+.section > * {
+  transform-origin: center top;
+  transform: scaleY(calc(1 / (1 - var(--scale))));
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: bold;
+  line-height: 1.125;
+}
+
+.byline {
+  display: block;
+  font-size: 0.6em;
+  margin: calc(var(--space) / 1.35) 0;
+}
+
+.content {
+  position: relative;
+  margin: -50vh auto 0;
+  padding: var(--space);
+  max-width: 55ch;
+  width: calc(100% - var(--space));
+  background: hsla(5, 15%, 5%, 0.9);
+}
+
+.content > * + * {
+  margin-top: 2rem;
+}
+
+.image-container {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+}
+
+.image-container img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    hsla(5, 15%, 5%, 0) 0%,
+    hsla(5, 15%, 5%, 0.013) 8.1%,
+    hsla(5, 15%, 5%, 0.049) 15.5%,
+    hsla(5, 15%, 5%, 0.104) 22.5%,
+    hsla(5, 15%, 5%, 0.175) 29%,
+    hsla(5, 15%, 5%, 0.259) 35.3%,
+    hsla(5, 15%, 5%, 0.352) 41.2%,
+    hsla(5, 15%, 5%, 0.45) 47.1%,
+    hsla(5, 15%, 5%, 0.55) 52.9%,
+    hsla(5, 15%, 5%, 0.648) 58.8%,
+    hsla(5, 15%, 5%, 0.741) 64.7%,
+    hsla(5, 15%, 5%, 0.825) 71%,
+    hsla(5, 15%, 5%, 0.896) 77.5%,
+    hsla(5, 15%, 5%, 0.951) 84.5%,
+    hsla(5, 15%, 5%, 0.987) 91.9%,
+    hsl(5, 15%, 5%) 100%
+  );
+}
+
+@keyframes fadein {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 </style>
 <link rel="stylesheet" href="pagestyles.css">
@@ -18,7 +162,7 @@
 <nav class="nav">
 <div class="container">
  <div class="logo">
-<img src="lcorplogo.jpg" style="width: 90px;height:60px;">
+<img src="githublog.png" style="width: 90px;height:60px;">
 </div>
 <div id="mainListDiv" class="main_list">
 <ul class="navlinks">
@@ -39,7 +183,46 @@
 <!-- <section class="home">
 </section> -->
 <div style="height: 100%">
-
+<header class="header"> 
+  <h1 class="page-title">CSS position sticky parallax effect</h1>
+</header>
+ <main class="main">
+  <section class="section">
+    <figure class="image-container"><img src="https://images.unsplash.com/photo-1597487389339-5591e52de66f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHw&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=1200" alt=""/></figure>
+    <article class="content">
+      <h2 class="section-title">Let's Get to Know One Another</h2><span class="byline">Content provided by <a href="https://laurenhallden.com/datingipsum/" target="_blank" rel="noreferrer">the online dating ipsum generator →</a></span>
+      <p>If I make fun of you it's because I like you someone to provide for you documentary filmmaker everything destructive that I do. But I only smoke when drinking Think about it! heyyy I despise you should message me, my last partner told me really only soft drugs friendzone looking for a third if you dress up like a pin-up doll for me. Full-contact Ayn Rand Libertarian full-contact full-contact wildly attractive doesn't hurt.</p>
+      <p>P90X you should be clean and intelligent but I only smoke when drinking that means I am wonderful. MFA I love the smell of The Game I am currently addicted to shooting, lol making others feel good very successsful entrepreneur I'm a big fan of I starred in my own reality show. Bald is sexy P90X beekeeping I am currently addicted to I don't really keep a budget I did a lot of modeling work in the mid-80s.</p>
+      <p>No robots posing as real people P90X you need a real man working on my screenplay. That just proves my point clubbing I will love you forever shooting laughing hysterically, females performance art or so I've been told there's no such thing as a typical Friday night I'm a nice guy. I am extremely experienced and talented Juggalo with lots of self-respect you need a real man it depends on the night dive bars.</p>
+      <p>That's what she said heyyy everything destructive that I do my lizard tongue. Complete lack of shame unworthy of serious consideration if you like I know shirtless pics are a no-no, but beekeeping, unworthy of serious consideration I know shirtless pics are a no-no, but my last partner told me well-built Think about it!. I don't really keep a budget I did a lot of modeling work in the mid-80s well-built I am oddly aroused by for real though unworthy of serious consideration.</p>
+      <p>There's no such thing as a typical Friday night I starred in my own reality show I enjoy I'm a big fan of. See, I told you if I make fun of you it's because I like you dive bars because I am a paradox my deep, manly voice, complete lack of shame if you have an innie belly button with lots of self-respect years ago I discovered living on sailboats. Motorcycle collection when I get drunk I am extremely experienced and talented working on my screenplay everything destructive that I do blackjack.</p>
+      <p>If that paragraph above turned you off I did a lot of modeling work in the mid-80s it's huge females. I am oddly aroused by documentary filmmaker you could say I'm old-fashioned I have an IQ of 140, which means there's no such thing as a typical Friday night, I am currently addicted to for real though most cats eventually love me I'm a nice guy Juggalo. I hope there are good girls left P90X I do well dating living on sailboats I hope there are good girls left I grow a creepy mustache every February.</p>
+    </article>
+  </section>
+  <section class="section">
+    <figure class="image-container"><img src="https://images.unsplash.com/photo-1597201424013-0e06a7018fbd?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHw&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=1200" alt=""/></figure>
+    <article class="content">
+      <h2 class="section-title">Some Stuff I Need to Get Off My Chest</h2><span class="byline">Content provided by <a href="https://laurenhallden.com/datingipsum/" target="_blank" rel="noreferrer">the online dating ipsum generator →</a></span>
+      <p>If I make fun of you it's because I like you someone to provide for you documentary filmmaker everything destructive that I do. But I only smoke when drinking Think about it! heyyy I despise you should message me, my last partner told me really only soft drugs friendzone looking for a third if you dress up like a pin-up doll for me. Full-contact Ayn Rand Libertarian full-contact full-contact wildly attractive doesn't hurt.</p>
+      <p>P90X you should be clean and intelligent but I only smoke when drinking that means I am wonderful. MFA I love the smell of The Game I am currently addicted to shooting, lol making others feel good very successsful entrepreneur I'm a big fan of I starred in my own reality show. Bald is sexy P90X beekeeping I am currently addicted to I don't really keep a budget I did a lot of modeling work in the mid-80s.</p>
+      <p>No robots posing as real people P90X you need a real man working on my screenplay. That just proves my point clubbing I will love you forever shooting laughing hysterically, females performance art or so I've been told there's no such thing as a typical Friday night I'm a nice guy. I am extremely experienced and talented Juggalo with lots of self-respect you need a real man it depends on the night dive bars.</p>
+      <p>That's what she said heyyy everything destructive that I do my lizard tongue. Complete lack of shame unworthy of serious consideration if you like I know shirtless pics are a no-no, but beekeeping, unworthy of serious consideration I know shirtless pics are a no-no, but my last partner told me well-built Think about it!. I don't really keep a budget I did a lot of modeling work in the mid-80s well-built I am oddly aroused by for real though unworthy of serious consideration.</p>
+      <p>There's no such thing as a typical Friday night I starred in my own reality show I enjoy I'm a big fan of. See, I told you if I make fun of you it's because I like you dive bars because I am a paradox my deep, manly voice, complete lack of shame if you have an innie belly button with lots of self-respect years ago I discovered living on sailboats. Motorcycle collection when I get drunk I am extremely experienced and talented working on my screenplay everything destructive that I do blackjack.</p>
+      <p>If that paragraph above turned you off I did a lot of modeling work in the mid-80s it's huge females. I am oddly aroused by documentary filmmaker you could say I'm old-fashioned I have an IQ of 140, which means there's no such thing as a typical Friday night, I am currently addicted to for real though most cats eventually love me I'm a nice guy Juggalo. I hope there are good girls left P90X I do well dating living on sailboats I hope there are good girls left I grow a creepy mustache every February.</p>
+    </article>
+  </section>
+  <section class="section">
+    <figure class="image-container"><img src="https://images.unsplash.com/photo-1543408458-baf63378be13?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHw&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=1200" alt=""/></figure>
+    <article class="content">
+      <h2 class="section-title">Call Me, Maybe</h2><span class="byline">Content provided by <a href="https://laurenhallden.com/datingipsum/" target="_blank" rel="noreferrer">the online dating ipsum generator →</a></span>
+      <p>If I make fun of you it's because I like you someone to provide for you documentary filmmaker everything destructive that I do. But I only smoke when drinking Think about it! heyyy I despise you should message me, my last partner told me really only soft drugs friendzone looking for a third if you dress up like a pin-up doll for me. Full-contact Ayn Rand Libertarian full-contact full-contact wildly attractive doesn't hurt.</p>
+      <p>P90X you should be clean and intelligent but I only smoke when drinking that means I am wonderful. MFA I love the smell of The Game I am currently addicted to shooting, lol making others feel good very successsful entrepreneur I'm a big fan of I starred in my own reality show. Bald is sexy P90X beekeeping I am currently addicted to I don't really keep a budget I did a lot of modeling work in the mid-80s.</p>
+      <p>No robots posing as real people P90X you need a real man working on my screenplay. That just proves my point clubbing I will love you forever shooting laughing hysterically, females performance art or so I've been told there's no such thing as a typical Friday night I'm a nice guy. I am extremely experienced and talented Juggalo with lots of self-respect you need a real man it depends on the night dive bars.</p>
+      <p>That's what she said heyyy everything destructive that I do my lizard tongue. Complete lack of shame unworthy of serious consideration if you like I know shirtless pics are a no-no, but beekeeping, unworthy of serious consideration I know shirtless pics are a no-no, but my last partner told me well-built Think about it!. I don't really keep a budget I did a lot of modeling work in the mid-80s well-built I am oddly aroused by for real though unworthy of serious consideration.</p>
+      <p>There's no such thing as a typical Friday night I starred in my own reality show I enjoy I'm a big fan of. See, I told you if I make fun of you it's because I like you dive bars because I am a paradox my deep, manly voice, complete lack of shame if you have an innie belly button with lots of self-respect years ago I discovered living on sailboats. Motorcycle collection when I get drunk I am extremely experienced and talented working on my screenplay everything destructive that I do blackjack.</p>
+      <p>If that paragraph above turned you off I did a lot of modeling work in the mid-80s it's huge females. I am oddly aroused by documentary filmmaker you could say I'm old-fashioned I have an IQ of 140, which means there's no such thing as a typical Friday night, I am currently addicted to for real though most cats eventually love me I'm a nice guy Juggalo. I hope there are good girls left P90X I do well dating living on sailboats I hope there are good girls left I grow a creepy mustache every February.</p>
+    </article>
+  </section> 
 </main>
 <div class="footer" style="background-color:black;">
 <div class="contain">

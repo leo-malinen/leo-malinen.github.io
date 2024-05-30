@@ -4,152 +4,119 @@
 <title>Rendering Gallery</title>
 <link rel="icon" href="githublogo.png" type="image/icon type">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;700&display=swap');
 
-:root {
-  --scale: 0.1;
-  --space: 8vmin;
-  --font-primary: 'Lato', sans-serif;
-  --font-heading: 'Playfair Display', serif;
-}
-
-@media (prefers-reduced-motion) {
-  :root {
-    --scale: 0;
-  }
-}
-
-* {
-  box-sizing: border-box;
+:root{
+--color: #333; 
 }
 
 body {
-  color: hsl(0, 0%, 95%);
-  background-color: hsl(5, 15%, 5%);
-  font-size: clamp(1.2rem, 5vw, 1.5rem);
-  font-family: var(--font-primary);
-  line-height: 1.6;
+  font-family: 'Red Hat Text', sans-serif;
+}
+
+.container {
+  text-align: center;
+  color: var(--color);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(https://images.unsplash.com/photo-1519120944692-1a8d8cfc107f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80);
+  background-size: cover;
+  background-position: center;
+  
+/*  this is where the magic happens:  */
+  background-attachment: fixed;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+p {
+  max-width: 52ch;
+  line-height: 1.5;
+  padding: 1em;
 }
 
 a {
-  color: hsl(65, 80%, 60%);
+  display: inline-block;
+  padding: 1em 3.5em;
+  background-color: var(--color);
+  color: white;
   text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 0.3em;
+  font-weight: 700;
+  letter-spacing: .5px;
+  font-size: .875rem;
 }
 
-a:hover,
-a:focus {
-  text-decoration: underline;
-}
-
-.page-title {
-  text-align: center;
-}
-
-.page-title::after {
-  content: '↓';
-  display: block;
-  font-size: 2em;
-  opacity: 0;
-  transform: translateY(-24px);
-  animation: fadein 800ms 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-.header,
-.footer {
-  display: grid;
-  place-items: center;
-  height: 100vh;
-}
-
-.section {
-  transform-origin: center top;
-  transform: scaleY(calc(1 - var(--scale)));
-}
-
-.section > * {
-  transform-origin: center top;
-  transform: scaleY(calc(1 / (1 - var(--scale))));
-}
-
-.section-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: bold;
-  line-height: 1.125;
-}
-
-.byline {
-  display: block;
-  font-size: 0.6em;
-  margin: calc(var(--space) / 1.35) 0;
-}
-
-.content {
-  position: relative;
-  margin: -50vh auto 0;
-  padding: var(--space);
-  max-width: 55ch;
-  width: calc(100% - var(--space));
-  background: hsla(5, 15%, 5%, 0.9);
-}
-
-.content > * + * {
-  margin-top: 2rem;
-}
-
-.image-container {
-  position: sticky;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
-}
-
-.image-container img {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
+.blank,
+.other {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  min-height: 60vh;
+  background-color: var(--color);
 }
 
-.image-container::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background: linear-gradient(
-    to bottom,
-    hsla(5, 15%, 5%, 0) 0%,
-    hsla(5, 15%, 5%, 0.013) 8.1%,
-    hsla(5, 15%, 5%, 0.049) 15.5%,
-    hsla(5, 15%, 5%, 0.104) 22.5%,
-    hsla(5, 15%, 5%, 0.175) 29%,
-    hsla(5, 15%, 5%, 0.259) 35.3%,
-    hsla(5, 15%, 5%, 0.352) 41.2%,
-    hsla(5, 15%, 5%, 0.45) 47.1%,
-    hsla(5, 15%, 5%, 0.55) 52.9%,
-    hsla(5, 15%, 5%, 0.648) 58.8%,
-    hsla(5, 15%, 5%, 0.741) 64.7%,
-    hsla(5, 15%, 5%, 0.825) 71%,
-    hsla(5, 15%, 5%, 0.896) 77.5%,
-    hsla(5, 15%, 5%, 0.951) 84.5%,
-    hsla(5, 15%, 5%, 0.987) 91.9%,
-    hsl(5, 15%, 5%) 100%
-  );
+.second {
+  background-image:url(https://images.unsplash.com/photo-1514496959998-c01c40915c5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+  background-attachment: fixed;
+  height: 1200px;
 }
 
-@keyframes fadein {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+h3 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-top: 1em;
 }
 
+.card > a {
+  margin-bottom: 2em;
+}
+
+.item {
+  display: flex;
+  max-width: 320px;
+  background-color: white;;
+  flex-direction: column;
+  align-items: center;
+  border-radius: .5em;
+  -webkit-box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
+  -moz-box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
+  box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
+}
+
+.img {
+  width: 90%;
+  height: 200px;
+  background-color: lightgrey;
+  background-size: cover;
+  background-position: center;
+  margin-top: 20px;
+  border-radius: .3em;;
+}
+
+.img-first {
+  background-image: url(galleryparallax1.jpg);
+}
+
+.img-second {
+  background-image: url(galleryparallax2.jpg);
+}
+
+.img-third {
+  background-image: url(galleryparallax3.jpg);
+}
+
+.second {
+  flex-direction: row;
+  gap: 1.6em;
+}
+  
 </style>
 <link rel="stylesheet" href="pagestyles.css">
 <link rel="stylesheet" href="navbar.js">
@@ -183,32 +150,42 @@ a:focus {
 <!-- <section class="home">
 </section> -->
 <div style="height: 100%">
-<header class="header"> 
-  <h1 class="page-title">The Gallery of 3d Renders</h1>
-</header>
- <main class="main">
-  <section class="section">
-    <figure class="image-container"><img src="https://images.unsplash.com/photo-1597487389339-5591e52de66f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHw&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=1200" alt=""/></figure>
-    <article>
-      <h2 class="section-title">Images made in Blender</h2>
-      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </article>
-  </section>
-  <section class="section">
-    <figure class="image-container"><img src="https://images.unsplash.com/photo-1597201424013-0e06a7018fbd?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHw&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=1200" alt=""/></figure>
-    <article>
-      <h2 class="section-title">Video Slideshow 1 (Coming soon)</h2>
-      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </article>
-  </section>
-  <section class="section">
-    <figure class="image-container"><img src="https://images.unsplash.com/photo-1543408458-baf63378be13?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHw&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=1200" alt=""/></figure>
-    <article>
-      <h2 class="section-title">Video Slideshow 2 (Coming soon)</h2>
-      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </article>
-  </section> 
-</main>
+<div class="container">
+  <h1>Gallery of 3d Renders</h1>
+  <p>This page contains all the pictures and videos that I have made in various rendering software as a hobby throughout the years</p>
+  <a href="#">Scroll down to see</a>
+</div>
+
+<div class="blank"></div>
+
+<div class="container second">
+  <div class="item">
+    <div class="img img-first"></div>
+    <div class="card">
+      <h3>Rock climbing</h3>
+      <p>The goal is to reach the summit of a formation or the endpoint of a usually pre-defined route without falling</p>
+      <a href="#">Learn more</a>
+    </div>
+  </div>
+  <div class="item">
+    <div class="img img-second"></div>
+    <div class="card">
+      <h3>Caving</h3>
+      <p>Exploring underground through networks of tunnels and passageways, which can be natural or artificial.</p>
+      <a href="#">Learn more</a>
+    </div>
+  </div>
+  <div class="item">
+    <div class="img img-third"></div>
+    <div class="card">
+      <h3>Parachuting</h3>
+      <p>Jumping from an aeroplane and falling through the air before opening your parachute.</p>
+      <a href="#">Learn more</a>
+    </div>
+  </div>
+</div>
+
+<div class="blank"></div>
 <div class="footer" style="background-color:black;">
 <div class="contain">
 <div class="col">

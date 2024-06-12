@@ -4,119 +4,43 @@
 <title>Rendering Gallery</title>
 <link rel="icon" href="githublogo.png" type="image/icon type">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;700&display=swap');
-
-:root{
---color: #333; 
-}
-
-body {
-  font-family: 'Red Hat Text', sans-serif;
-}
-
-.container {
-  text-align: center;
-  color: var(--color);
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-image: url(https://images.unsplash.com/photo-1519120944692-1a8d8cfc107f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80);
+ body {
+  background-image: url("");
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  
-/*  this is where the magic happens:  */
   background-attachment: fixed;
+  background-color: #000;
+} 
+.textboxbody1 {
+    background-color: #000;
+    color: #fff;
+    opacity: 69%;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-opacity: 100%;
+    padding-top: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 2%;
 }
-
-h1 {
-  font-weight: 700;
-  font-size: 3rem;
+h1,h2 {
+  font-family: 'Mylodon-Light', sans-serif;
+  padding: 1em 2em;
+  font-size: 50px;
+  color: #ffffff;
+  font-weight: 400;
+  margin: 0.4em 0;
 }
-
-p {
-  max-width: 52ch;
-  line-height: 1.5;
-  padding: 1em;
+h1 { font-size: 4em; }
+h2 {
+  color: #ffffff;
+  font-size: 3em;
 }
-
-a {
-  display: inline-block;
-  padding: 1em 3.5em;
-  background-color: var(--color);
-  color: white;
-  text-decoration: none;
-  text-transform: uppercase;
-  border-radius: 0.3em;
-  font-weight: 700;
-  letter-spacing: .5px;
-  font-size: .875rem;
+@font-face {
+    font-family: Mylodon-Light;
+    font-weight: bold;
+    src: url("Mylodon-Light.otf") format("opentype");
 }
-
-.blank,
-.other {
-  width: 100%;
-  min-height: 60vh;
-  background-color: var(--color);
-}
-
-.second {
-  background-image:url(https://images.unsplash.com/photo-1514496959998-c01c40915c5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
-  background-attachment: fixed;
-  height: 1200px;
-}
-
-h3 {
-  font-weight: 700;
-  font-size: 1.6rem;
-  margin-top: 1em;
-}
-
-.card > a {
-  margin-bottom: 2em;
-}
-
-.item {
-  display: flex;
-  max-width: 320px;
-  background-color: white;;
-  flex-direction: column;
-  align-items: center;
-  border-radius: .5em;
-  -webkit-box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
-  -moz-box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
-  box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
-}
-
-.img {
-  width: 90%;
-  height: 200px;
-  background-color: lightgrey;
-  background-size: cover;
-  background-position: center;
-  margin-top: 20px;
-  border-radius: .3em;;
-}
-
-.img-first {
-  background-image: url(galleryparallax1.jpg);
-}
-
-.img-second {
-  background-image: url(galleryparallax2.jpg);
-}
-
-.img-third {
-  background-image: url(galleryparallax3.jpg);
-}
-
-.second {
-  flex-direction: row;
-  gap: 1.6em;
-}
-  
 </style>
 <link rel="stylesheet" href="pagestyles.css">
 <link rel="stylesheet" href="navbar.js">
@@ -150,42 +74,45 @@ h3 {
 <!-- <section class="home">
 </section> -->
 <div style="height: 100%">
-<div class="container">
-  <h1>Gallery of 3d Renders</h1>
-  <p>This page contains all the pictures and videos that I have made in various rendering software as a hobby throughout the years</p>
-  <a href="#">Scroll down to see</a>
-</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<div class="blank"></div>
-
-<div class="container second">
-  <div class="item">
-    <div class="img img-first"></div>
-    <div class="card">
-      <h3>Rock climbing</h3>
-      <p>The goal is to reach the summit of a formation or the endpoint of a usually pre-defined route without falling</p>
-      <a href="#">Learn more</a>
-    </div>
-  </div>
-  <div class="item">
-    <div class="img img-second"></div>
-    <div class="card">
-      <h3>Caving</h3>
-      <p>Exploring underground through networks of tunnels and passageways, which can be natural or artificial.</p>
-      <a href="#">Learn more</a>
-    </div>
-  </div>
-  <div class="item">
-    <div class="img img-third"></div>
-    <div class="card">
-      <h3>Parachuting</h3>
-      <p>Jumping from an aeroplane and falling through the air before opening your parachute.</p>
-      <a href="#">Learn more</a>
-    </div>
-  </div>
-</div>
-
-<div class="blank"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</main>
 <div class="footer" style="background-color:black;">
 <div class="contain">
 <div class="col">
@@ -235,6 +162,62 @@ h3 {
                 $('.nav').removeClass('affix');
             }
         });
+  var TxtRotate = function(el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 2000;
+  this.txt = '';
+  this.tick();
+  this.isDeleting = false;
+};
+
+TxtRotate.prototype.tick = function() {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+  var that = this;
+  var delta = 300 - Math.random() * 100;
+
+  if (this.isDeleting) { delta /= 2; }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === '') {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
+  }
+
+  setTimeout(function() {
+    that.tick();
+  }, delta);
+};
+
+window.onload = function() {
+  var elements = document.getElementsByClassName('txt-rotate');
+  for (var i=0; i<elements.length; i++) {
+    var toRotate = elements[i].getAttribute('data-rotate');
+    var period = elements[i].getAttribute('data-period');
+    if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+  // INJECT CSS
+  var css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+  document.body.appendChild(css);
+};
 </script>
 <script>
 

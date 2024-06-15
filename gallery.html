@@ -41,6 +41,20 @@ h2 {
     font-family: Mylodon-Light;
     font-weight: bold;
     src: url("Mylodon-Light.otf") format("opentype");
+ /*iframe code for the gallery iframe page*/
+.iframe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - (height of your navbar + height of your footer));
+}
+
+iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    border: none;
+}
 }
 </style>
 <link rel="stylesheet" href="pagestyles.css">
@@ -76,7 +90,9 @@ h2 {
 </section> -->
 <div style="height: 100%">
 <br>
-<iframe src="gallerypage.html" style = "height: 100%; width: 100%;">
+<div class="iframe-container">
+    <iframe src="gallerypage.html"></iframe>
+</div>
 <br>
 </main>
 <div class="footer" style="background-color:black;">

@@ -41,6 +41,7 @@ h2 {
     font-family: Mylodon-Light;
     font-weight: bold;
     src: url("Mylodon-Light.otf") format("opentype");
+}
  /*iframe code for the gallery iframe page*/
 .iframe-container {
     display: flex;
@@ -52,11 +53,10 @@ h2 {
 
 iframe {
     width: 100%;
-    max-width: 1920px;
     height: 100%;
-    max-height: 1080px;
     border: none;
 }
+
 </style>
 <link rel="stylesheet" href="pagestyles.css">
 <link rel="stylesheet" href="navbar.js">
@@ -91,6 +91,9 @@ iframe {
 <div style="height: 100%">
 <br>
 <!-- iframe here -->
+ <div class="iframe-container">
+    <iframe src="your_iframe_source.html"></iframe>
+</div>
 <br>
 </main>
 <!-- footer below here mayne remove -->

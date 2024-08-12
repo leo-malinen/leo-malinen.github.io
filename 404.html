@@ -1,181 +1,128 @@
-<!Doctype HTML>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Error 404</title>
-<link rel="icon" href="githublogo.png" type="image/icon type">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
-body{ 
-  display: flex;
-  width: 100vw;
-  height: 20vh;
-  align-items: center;
-  justify-content: center;
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Error 404 page not found</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:700,900" rel="stylesheet">
+  <style>
+    * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  padding: 0;
   margin: 0;
-  background: #000;
-  color: #fff;
-  font-size: 96px;
-  font-family: 'Audiowide', Audiowide;
-  letter-spacing: -7px;
 }
 
-div{
-  animation: glitch 1s linear infinite;
+#notfound {
+  position: relative;
+  height: 100vh;
+  background: #030005;
 }
 
-@keyframes glitch{
-  2%,64%{
-    transform: translate(2px,0) skew(0deg);
-  }
-  4%,60%{
-    transform: translate(-2px,0) skew(0deg);
-  }
-  62%{
-    transform: translate(0,0) skew(5deg); 
-  }
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
-div:before,
-div:after{
-  content: attr(title);
+.notfound {
+  max-width: 767px;
+  width: 100%;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.notfound .notfound-404 {
+  position: relative;
+  height: 180px;
+  margin-bottom: 20px;
+  z-index: -1;
+}
+
+.notfound .notfound-404 h1 {
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50% , -50%);
+      -ms-transform: translate(-50% , -50%);
+          transform: translate(-50% , -50%);
+  font-size: 224px;
+  font-weight: 900;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: -12px;
+  color: #030005;
+  text-transform: uppercase;
+  text-shadow: -1px -1px 0px #5200A3, 1px 1px 0px #0007D1;
+  letter-spacing: -20px;
+}
+
+
+.notfound .notfound-404 h2 {
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
   left: 0;
+  right: 0;
+  top: 110px;
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0px 2px 0px #5200A3;
+  letter-spacing: 13px;
+  margin: 0;
 }
 
-div:before{
-  animation: glitchTop 1s linear infinite;
-  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+.notfound a {
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  text-transform: uppercase;
+  color: #0007D1;
+  text-decoration: none;
+  border: 2px solid;
+  background: transparent;
+  padding: 10px 40px;
+  font-size: 14px;
+  font-weight: 700;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
 }
 
-@keyframes glitchTop{
-  2%,64%{
-    transform: translate(2px,-2px);
-  }
-  4%,60%{
-    transform: translate(-2px,2px);
-  }
-  62%{
-    transform: translate(13px,-1px) skew(-13deg); 
-  }
+.notfound a:hover {
+  color: #5200A3;
 }
 
-div:after{
-  animation: glitchBotom 1.5s linear infinite;
-  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+@media only screen and (max-width: 767px) {
+    .notfound .notfound-404 h2 {
+        font-size: 24px;
+    }
 }
 
-@keyframes glitchBotom{
-  2%,64%{
-    transform: translate(-2px,0);
-  }
-  4%,60%{
-    transform: translate(-2px,0);
-  }
-  62%{
-    transform: translate(-22px,5px) skew(21deg); 
+@media only screen and (max-width: 480px) {
+  .notfound .notfound-404 h1 {
+      font-size: 182px;
   }
 }
-</style>
-<head>
+  </style>
+</head>
 <body>
-
-<center><div title="404">404</div><center>
-
-<script>
-var canvas = document.body.appendChild( document.createElement( 'canvas' ) ),
-    context = canvas.getContext( '2d' );
-context.globalCompositeOperation = 'lighter';
-canvas.width = 1050;
-canvas.height = 1250;
-draw();
-
-var textStrip = ['1', '0', '1', '0', '1', '0', '1', '0', '1', '0', '1', '0', '1'];
-
-var stripCount = 60, stripX = new Array(), stripY = new Array(), dY = new Array(), stripFontSize = new Array();
-
-for (var i = 0; i < stripCount; i++) {
-    stripX[i] = Math.floor(Math.random()*1265);
-    stripY[i] = -100;
-    dY[i] = Math.floor(Math.random()*7)+3;
-    stripFontSize[i] = Math.floor(Math.random()*16)+8;
-}
-
-var theColors = ['#cefbe4', '#81ec72', '#5cd646', '#54d13c', '#4ccc32', '#43c728'];
-
-var elem, context, timer;
-
-function drawStrip(x, y) {
-    for (var k = 0; k <= 20; k++) {
-        var randChar = textStrip[Math.floor(Math.random()*textStrip.length)];
-        if (context.fillText) {
-            switch (k) {
-            case 0:
-                context.fillStyle = theColors[0]; break;
-            case 1:
-                context.fillStyle = theColors[1]; break;
-            case 3:
-                context.fillStyle = theColors[2]; break;
-            case 7:
-                context.fillStyle = theColors[3]; break;
-            case 13:
-                context.fillStyle = theColors[4]; break;
-            case 17:
-                context.fillStyle = theColors[5]; break;
-            }
-            context.fillText(randChar, x, y);
-        }
-        y -= stripFontSize[k];
-    }
-}
-
-function draw() {
-    // clear the canvas and set the properties
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.shadowOffsetX = context.shadowOffsetY = 0;
-    context.shadowBlur = 8;
-    context.shadowColor = '#94f475';
-    
-    for (var j = 0; j < stripCount; j++) {
-        context.font = stripFontSize[j]+'px MatrixCode';
-        context.textBaseline = 'top';
-        context.textAlign = 'center';
-        
-        if (stripY[j] > 1358) {
-            stripX[j] = Math.floor(Math.random()*canvas.width);
-            stripY[j] = -100;
-            dY[j] = Math.floor(Math.random()*7)+3;
-            stripFontSize[j] = Math.floor(Math.random()*16)+8;
-            drawStrip(stripX[j], stripY[j]);
-        } else drawStrip(stripX[j], stripY[j]);
-        
-        stripY[j] += dY[j];
-    }
-  setTimeout(draw, 70);
-}
-</script>
-<script>
-
-  document.onkeydown = function(e) {
-    if(e.keyCode == 123) {
-     return false;
-    }
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
-     return false;
-    }
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
-     return false;
-    }
-    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
-     return false;
-    }
-
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){
-     return false;
-    }      
- }
-
-</script>
+	<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>404</h1>
+				<h2>Page not found</h2>
+			</div>
+			<a href="home.html">Homepage</a>
+		</div>
+	</div>
 </body>
 </html>

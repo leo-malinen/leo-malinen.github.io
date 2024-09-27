@@ -104,13 +104,13 @@ header {
   transform: translate(-50%, -50%);
 }
 
-.section:nth-child(10) {
+.section:nth-child(7) {
   background-color: #000;
   color: #fff;
   top: 900vh;
   z-index: 10;
 }
-.section:nth-child(10) .fixed {
+.section:nth-child(7) .fixed {
   transform: translate(-50%, -50%);
 }
 

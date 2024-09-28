@@ -41,7 +41,7 @@ header {
 
 .section:nth-child(1) {
   background-color: #808080;
-  color: #000;
+  color: #fff;
   top: 0;
   z-index: 1;
 }

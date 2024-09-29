@@ -66,6 +66,10 @@ header {
 
 .section:nth-child(3) {
   box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
+  background-image: url("galleryparallax2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   background-color: #0a0ac2;
   color: #fff;
   top: 200vh;
@@ -76,6 +80,10 @@ header {
 }
 
 .section:nth-child(4) {
+  background-image: url("galleryparallax3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
   background-color: #85c20a;
   color: #fff;

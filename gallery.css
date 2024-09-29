@@ -51,7 +51,7 @@ header {
 
 .section:nth-child(2) {
   box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
-  background-image: url("galleryparallax1.jpg");
+  background-image: url("galleryparallax3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -66,7 +66,7 @@ header {
 
 .section:nth-child(3) {
   box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
-  background-image: url("galleryparallax2.jpg");
+  background-image: url("galleryparallax1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -80,7 +80,7 @@ header {
 }
 
 .section:nth-child(4) {
-  background-image: url("galleryparallax3.jpg");
+  background-image: url("galleryparallax2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -92,6 +92,17 @@ header {
 }
 .section:nth-child(4) .fixed {
   transform: translate(-50%, -50%);
+}
+
+.section:nth-child(5) { 
+  background-color: #000; 
+  color: #fff; 
+  top: 400vh; 
+  z-index: 10; 
+} 
+
+.section:nth-child(5) .fixed { 
+  transform: translate(-50%, -50%); 
 }
 
 .oop {

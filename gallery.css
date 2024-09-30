@@ -106,7 +106,7 @@ header {
 }
 
 #.oop {
-  position: relative;
+ # position: relative;
   z-index: auto;
   height: 1px;
   background: linear-gradient(141deg, #48ded4 0%, #a026bf 51%, #e82c75 75%);

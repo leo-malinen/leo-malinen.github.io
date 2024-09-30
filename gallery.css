@@ -105,7 +105,7 @@ header {
   transform: translate(-50%, -50%); 
 }
 
-.oop {
+#.oop {
   position: relative;
   z-index: auto;
   height: 1px;

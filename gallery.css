@@ -35,6 +35,19 @@ header {
   top: 50%;
   left: 50%;
 }
+
+.fixed video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+
 .section .white {
   color: #fff;
 }
@@ -104,10 +117,3 @@ header {
 .section:nth-child(5) .fixed { 
   transform: translate(-50%, -50%); 
 }
-
-#.oop {
- # position: relative;
- # z-index: auto;
- # height: 1px;
- # background: linear-gradient(141deg, #48ded4 0%, #a026bf 51%, #e82c75 75%);
-# }

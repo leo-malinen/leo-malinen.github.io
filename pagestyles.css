@@ -380,7 +380,7 @@ also setting content to the appropriate
 text set in the data-text attribute. */
 .glitch {
   position: relative;
-  color: white;
+  color: #00538C;
   font-size: 4em;
   letter-spacing: 0.5em;
   /* Animation provies a slight random skew. Check bottom of doc

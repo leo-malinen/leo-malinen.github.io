@@ -38,7 +38,21 @@ h2 {
     font-weight: bold;
     src: url("Mylodon-Light.otf") format("opentype");
 }
+.parallax-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
 
+.section1 { background-color: #001F3F; } /* Dark Blue */
+.section2 { background-color: #3D2F60; } /* Deep Indigo */
+.section3 { background-color: #6A1B9A; } /* Dark Violet */
+.section4 { background-color: #4B0082; } /* Cosmic Purple */
 </style>
 <link rel="stylesheet" href="gallery.css">
 <link rel="stylesheet" href="pagestyles.css">
@@ -83,6 +97,26 @@ h2 {
     <center><p style = "color:white;">Placeholder for now, while the site is being fixed</p></center>center
   </div>
 </div>
+
+ <section class="parallax-section section1">
+    <h2>Deep Blue Wonder</h2>
+    <p>This is the first section of the scrolling parallax effect.</p>
+</section>
+
+<section class="parallax-section section2">
+    <h2>Mysterious Indigo</h2>
+    <p>Transitioning into a deeper hue.</p>
+</section>
+
+<section class="parallax-section section3">
+    <h2>Twilight Violet</h2>
+    <p>The ambiance darkens with elegant purples.</p>
+</section>
+
+<section class="parallax-section section4">
+    <h2>Cosmic Purple</h2>
+    <p>Ending in a rich, cosmic purple tone.</p>
+</section>
   <!-- ending gallery code -->
 </section>
 <br>

@@ -55,15 +55,7 @@
       background-position: center;
       transition: opacity 0.6s ease-in-out;
     }
-    .section-video video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1; 
-    }
+    /* General Bottom Gradient */
     .parallax-section::before {
       content: "";
       position: absolute;
@@ -74,20 +66,57 @@
       pointer-events: none;
       background: linear-gradient(to bottom, transparent, #000);
     }
+    /* General Top Gradient */
+    .parallax-section::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      pointer-events: none;
+      background: linear-gradient(to bottom, #000, transparent);
+    }
+    .section-video video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1; 
+    }
+    /* Custom gradients for the video section */
     .section-video::before {
       background: linear-gradient(to bottom, transparent, #001F3F);
     }
+    .section-video::after {
+      background: linear-gradient(to bottom, #001F3F, transparent);
+    }
+    /* Custom gradients for each section */
     .section1::before {
       background: linear-gradient(to bottom, transparent, #3D2F60);
+    }
+    .section1::after {
+      background: linear-gradient(to bottom, #3D2F60, transparent);
     }
     .section2::before {
       background: linear-gradient(to bottom, transparent, #6A1B9A);
     }
+    .section2::after {
+      background: linear-gradient(to bottom, #6A1B9A, transparent);
+    }
     .section3::before {
       background: linear-gradient(to bottom, transparent, #4B0082);
     }
+    .section3::after {
+      background: linear-gradient(to bottom, #4B0082, transparent);
+    }
     .section4::before {
       background: linear-gradient(to bottom, transparent, #000);
+    }
+    .section4::after {
+      background: linear-gradient(to bottom, #000, transparent);
     }
   </style>
   <link rel="stylesheet" href="gallery.css">
@@ -136,17 +165,14 @@
       <h2>Deep Blue Wonder</h2>
       <p>This is the first section of the scrolling parallax effect.</p>
     </section>
-
     <section class="parallax-section section2">
       <h2>Mysterious Indigo</h2>
       <p>Transitioning into a deeper hue.</p>
     </section>
-
     <section class="parallax-section section3">
       <h2>Twilight Violet</h2>
       <p>The ambiance darkens with elegant purples.</p>
     </section>
-
     <section class="parallax-section section4">
       <h2>Cosmic Purple</h2>
       <p>Ending in a rich, cosmic purple tone.</p>
@@ -209,7 +235,7 @@
 
     window.onload = function() {
       var elements = document.getElementsByClassName('txt-rotate');
-      for (var i=0; i<elements.length; i++) {
+      for (var i = 0; i < elements.length; i++) {
         var toRotate = elements[i].getAttribute('data-rotate');
         var period = elements[i].getAttribute('data-period');
         if (toRotate) {

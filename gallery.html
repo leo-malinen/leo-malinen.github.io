@@ -120,13 +120,28 @@
     </section>
 
     <section class="parallax-section section3">
-      <h2>Video Slideshow</h2>
-      <p>The ambiance darkens with elegant purples.</p>
+    <h2>Video Slideshow</h2>
+    <p>The ambiance darkens with elegant purples.</p>
+    <div class="slideshow-container" id="videoSlideshow">
+      <div class="slide">
+        <video controls width="100%" height="auto">
+          <source src="triantiavideo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="slide">
+        <video controls width="100%" height="auto">
+          <source src="bigbrothers.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <a class="prev" onclick="plusSlides(-1, 'videoSlideshow')">&#10094;</a>
+      <a class="next" onclick="plusSlides(1, 'videoSlideshow')">&#10095;</a>
+    </div>
     </section>
 
     <section class="parallax-section section4">
       <h2>Thanks for scrolling!</h2>
-      <p>Ending in a rich, cosmic purple tone.</p>
     </section>
     
     <br>
@@ -232,7 +247,7 @@
     }
 
     window.addEventListener("load", function() {
-      var slideshows = ["slideshow1", "slideshow2"];
+      var slideshows = ["slideshow1", "slideshow2", "videoSlideshow"];
       for (var j = 0; j < slideshows.length; j++) {
         var id = slideshows[j];
         slideIndices[id] = 0;

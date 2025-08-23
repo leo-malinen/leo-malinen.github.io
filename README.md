@@ -1,1 +1,1 @@
-This is my website which I created in 2021, it includes my personal projects and links to other websites owned by me
+This is my website which I created in 2021, it includes links to my projects and others

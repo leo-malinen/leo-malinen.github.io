@@ -1,2 +1,1 @@
-# Parts of the website:  
-
+# Website created by Leo

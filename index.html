@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Leo Malinen</title>
+<meta name="description" content="Leo Malinen builds threat intelligence tooling, computer vision, and network analysis. B.S. Computer Science, May 2027.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23070A0F'/><rect x='9' y='9' width='5' height='5' fill='%23FFB35C'/><rect x='18' y='9' width='5' height='5' fill='%232C3A4E'/><rect x='9' y='18' width='5' height='5' fill='%232C3A4E'/><rect x='18' y='18' width='5' height='5' fill='%23FFB35C'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+
+<a class="skip" href="#top">Skip to content</a>
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<!-- ══ THE CITY ══════════════════════════════════════════════════════════════
+     One place, fixed for the whole page. Sections cut over it. Its planes move
+     at different rates from page scroll, its lights are revealed by the sweep,
+     and it never reloads or duplicates. Everything here is Leo's own render. -->
+<div class="city" aria-hidden="true" data-city>
+  <div class="city__plate" data-plane="plate">
+    <picture>
+      <source media="(max-width: 720px)" srcset="assets/hero-city-m.webp">
+      <img class="city__img" src="assets/hero-city.webp" width="2560" height="1600" alt="">
+    </picture>
+    <picture>
+      <source media="(max-width: 720px)" srcset="assets/hero-lights-m.webp">
+      <img class="city__lights" src="assets/hero-lights.webp" width="2560" height="1600" alt="">
+    </picture>
+  </div>
+  <img class="city__haze" data-plane="haze" src="assets/hero-haze.webp" width="2560" height="520" alt="">
+  <picture>
+    <source media="(max-width: 720px)" srcset="assets/hero-near-m.webp">
+    <img class="city__near" data-plane="near" src="assets/hero-near.webp" width="2560" height="340" alt="">
+  </picture>
+  <div class="city__scan" data-scan></div>
+  <div class="city__veil"></div>
+</div>
+
+
+<header class="bar">
+  <a class="mark" href="#top" aria-label="Leo Malinen, back to top">
+    <span class="mark__glyph" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="mark__name">Leo Malinen</span>
+  </a>
+  <nav class="bar__nav" aria-label="Sections of this page">
+    <a href="#work">Work</a>
+    <a href="#sentinel">Sentinel</a>
+    <a href="#projects">Projects</a>
+    <a href="#record">Record</a>
+  </nav>
+  <a class="btn btn--bar" href="mailto:leomalinen@proton.me">Get in touch</a>
+  <!-- The descent readout. A dossier's chrome is about how much you have been
+       shown, so the bar carries how far down the file you are. -->
+  <span class="bar__meter" aria-hidden="true"></span>
+</header>
+
+
+
+
+<main id="top">
+
+<!-- ══ ACT 1 · ARRIVAL ═══ anticipation ═══ flow + parallax + the sweep ══════
+     Deliberately NOT pinned. The planes separate as the page travels past. -->
+<section class="act act--hero" data-sc-act="flow" data-sc-span="1.6" data-hero>
+  <div class="hero">
+    <p class="stamp stamp--hero">B.S. Computer Science, May 2027</p>
+    <h1 class="hero__h">Leo<br>Malinen</h1>
+    <p class="hero__lede">Software engineering, security, and data. I build the part
+      that decides what matters.</p>
+    <p class="hero__do">
+      <a class="btn" href="mailto:leomalinen@proton.me">Get in touch</a>
+      <a class="lnk" href="#work">See the work</a>
+    </p>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ═══ not an act. Runs on its own clock, which is exactly what
+     makes act 5's hand-driven rail read differently later on. ═══════════════ -->
+<section class="strip" aria-label="Tools and languages">
+  <div class="strip__row" data-marquee>
+    <div class="strip__track">
+      <span>Python</span><span>TypeScript</span><span>JavaScript</span><span>C++</span><span>C</span><span>Java</span><span>R</span><span>PowerShell</span><span>HTML / CSS</span><span>SQL</span>
+      <span>Python</span><span>TypeScript</span><span>JavaScript</span><span>C++</span><span>C</span><span>Java</span><span>R</span><span>PowerShell</span><span>HTML / CSS</span><span>SQL</span>
+    </div>
+  </div>
+  <div class="strip__row strip__row--back" data-marquee>
+    <div class="strip__track">
+      <span>React</span><span>Next.js</span><span>Node.js</span><span>FastAPI</span><span>PyTorch</span><span>Pandas</span><span>OpenCV</span><span>Tailwind</span><span>Docker</span><span>Kubernetes</span><span>Nmap</span><span>Scapy</span><span>Ollama</span><span>Git</span>
+      <span>React</span><span>Next.js</span><span>Node.js</span><span>FastAPI</span><span>PyTorch</span><span>Pandas</span><span>OpenCV</span><span>Tailwind</span><span>Docker</span><span>Kubernetes</span><span>Nmap</span><span>Scapy</span><span>Ollama</span><span>Git</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACT 2 · ORIENTATION ═══ recognition ═══ pin + kinetic ════════════════
+     Three disciplines arriving one at a time is an argument, and an argument
+     wants a held frame. Ground is already there, so no empty-stage window. -->
+<section id="work" class="act" data-sc-act="pin" data-sc-span="2" data-sc-drift="#080C12">
+  <div data-sc-stage class="three">
+    <p class="stamp" data-sc-cue="0 1 0 0.06">Three things, one habit</p>
+    <div class="three__set">
+      <article class="three__i" data-sc-cue="0 1 0 0.06">
+        <h2 class="sc-display sc-display--md" data-sc-kinetic="lines">Engineering</h2>
+        <p class="sc-body">Python, TypeScript, React, FastAPI, Node. Four projects that
+          run on a machine rather than four that demo well.</p>
+      </article>
+      <article class="three__i" data-sc-cue="0.26 1 0.16 0.06">
+        <h2 class="sc-display sc-display--md">Security</h2>
+        <p class="sc-body">STIX and TAXII feeds, packet capture, port scanning, payload
+          inspection. Tooling I wrote because I wanted to see what was actually
+          on the wire.</p>
+      </article>
+      <article class="three__i" data-sc-cue="0.52 1 0.16 0.06">
+        <h2 class="sc-display sc-display--md">Data</h2>
+        <p class="sc-body">Annotation pipelines, rubric grading, cross-validation
+          against automated scripts. The unglamorous half of machine learning,
+          done properly.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACT 3 · NOISE ═══ unease ═══ reveal (iris, the only one on the page) ══
+     No photograph here on purpose: the page needs one non-city surface. The
+     ground is a plotted field of observations: a few thousand of them, almost
+     all dim, a handful that are not. It states the line before the line does.
+     Ends on authored silence. -->
+<section class="act act--noise" data-sc-act="flow" data-sc-span="1.4" data-sc-drift="#05070B">
+  <div class="noise">
+    <canvas class="noise__field" aria-hidden="true" data-field></canvas>
+    <!-- The iris is full-bleed and reveals a CLEARING, not the type. The line
+         is a sibling above it, brought up from the act's own --sc-p, so it
+         fades in inside an already-open space and is never cut mid-word. -->
+    <div class="noise__clear" data-sc-reveal="iris" data-sc-reveal-at="0.14 0.52" aria-hidden="true"></div>
+    <div class="noise__cut">
+      <p class="sc-lede noise__line">Most of it is nothing.<br>
+        <em>The job is knowing which part isn't.</em></p>
+    </div>
+  </div>
+  <div class="noise__hold" aria-hidden="true"></div>
+</section>
+
+<!-- ══ ACT 4 · RESOLUTION ═══ clarity ═══ PEAK ═══ pin + count ══════════════
+     Largest span on the page by 0.6. The city reaches full illumination here.
+     Every figure below is on the resume; nothing is invented, and the project
+     without measured figures does not get a counter. -->
+<section id="sentinel" class="act" data-sc-act="pin" data-sc-span="3.4" data-sc-drift="#0A1018">
+  <div data-sc-stage class="peak">
+    <div class="peak__head" data-sc-cue="0 0.30 0">
+      <p class="stamp">Project · self hosted</p>
+      <h2 class="sc-display sc-display--lg" data-sc-kinetic="lines">Security Sentinel</h2>
+      <p class="peak__tech">Next.js · TypeScript · Tailwind CSS · Ollama</p>
+    </div>
+    <div class="peak__body" data-sc-cue="0.22 0.56">
+      <p class="sc-body">It ingests STIX 2.1 indicators from TAXII 2.1 feeds, normalises
+        them into one searchable store, and surfaces what is trending across
+        sources rather than within any single one.</p>
+      <p class="sc-body">A local Ollama model runs on a daily schedule and summarises the
+        highest signal activity into a morning intel brief. Every byte of
+        data and every token of inference stays on the machine it belongs to.</p>
+    </div>
+    <div class="peak__nums" data-sc-cue="0.48 0.82 0.14 0.1">
+      <p class="stamp">Measured, across the four projects</p>
+      <dl class="nums">
+        <div><dt>CPU reduction, gesture pipeline</dt>
+          <dd class="sc-nums"><span data-sc-count="0 40" data-sc-count-at="0.52 0.66">0</span>%</dd></div>
+        <div><dt>Threat report convergence, local subnets</dt>
+          <dd class="sc-nums">under <span data-sc-count="0 5" data-sc-count-at="0.54 0.68">0</span> min</dd></div>
+        <div><dt>Geolocation resolve, global queries</dt>
+          <dd class="sc-nums">under <span data-sc-count="0 1" data-sc-count-at="0.56 0.70">0</span> sec</dd></div>
+      </dl>
+    </div>
+    <!-- The peak's actual peak. Copy clears, the sweep completes, and the city
+         is the only thing on the screen but one line. This is the moment the
+         tell-someone sentence in BRIEF.md promises. -->
+    <p class="peak__lit" data-sc-cue="0.78 1 0.08 0.04">Built to run unattended.</p>
+  </div>
+</section>
+
+<!-- ══ ACT 5 · RANGE ═══ momentum ═══ pan ═══════════════════════════════════
+     Lateral reads as breadth. The heading rides in as the first rail item so
+     it does not fight the fixed bar, and so the rail has the overflow it needs
+     to actually travel. Each card wears the tower its light sits on. -->
+<section id="projects" class="act" data-sc-act="pan" data-sc-span="2.8" data-sc-drift="#080B11">
+  <div data-sc-stage>
+    <div class="rail" data-sc-pan="0.05" data-rail>
+      <div class="rail__lead">
+        <p class="stamp">Four that run</p>
+        <h2 class="sc-display sc-display--md">Built, not<br>mocked up.</h2>
+        <p class="sc-body">Each one started because something was harder to see than it
+          should have been.</p>
+      </div>
+
+      <article class="card" id="gesture">
+        <div class="card__shot" data-sc-tilt="5">
+          <svg class="dia" viewBox="0 0 320 400" role="img" aria-label="Diagram: frames arrive, a motion threshold decides which ones cost processing">
+            <rect class="dia__bg" x="0" y="0" width="320" height="400"/>
+            <g class="dia__dim">
+              <path d="M24 300h272M24 250h272M24 200h272M24 150h272M24 100h272"/>
+            </g>
+            <path class="dia__sig" d="M24 232 46 236 68 208 90 240 112 234 134 150 156 132 178 246 200 238 222 176 244 158 266 244 296 238"/>
+            <g class="dia__thr"><path d="M24 190h272"/></g>
+            <g class="dia__on">
+              <circle cx="134" cy="150" r="4.5"/><circle cx="156" cy="132" r="4.5"/>
+              <circle cx="222" cy="176" r="4.5"/><circle cx="244" cy="158" r="4.5"/>
+              <path d="M134 158v78M156 140v96M222 184v52M244 166v70"/>
+            </g>
+            <rect class="dia__bar" x="24" y="330" width="272" height="30" rx="3"/>
+            <g class="dia__seg"><rect x="126" y="330" width="38" height="30" rx="3"/><rect x="214" y="330" width="38" height="30" rx="3"/></g>
+          </svg>
+        </div>
+        <h3>Gesture Control</h3>
+        <p class="card__tech">Python · OpenCV · Node</p>
+        <p class="sc-body">A hand tracking module for desktop navigation. Heavy frame
+          processing sits behind a motion detection threshold, which cut CPU
+          usage by 40%, and a state machine keeps gesture context across a session.</p>
+      </article>
+
+      <article class="card" id="toolkit">
+        <div class="card__shot" data-sc-tilt="5">
+          <svg class="dia" viewBox="0 0 320 400" role="img" aria-label="Diagram: a subnet swept host by host, a few hosts answering">
+            <rect class="dia__bg" x="0" y="0" width="320" height="400"/>
+            <g class="dia__dim2"><rect x="30" y="60" width="15" height="15" rx="2"/><rect x="68" y="60" width="15" height="15" rx="2"/><rect x="106" y="60" width="15" height="15" rx="2"/><rect x="144" y="60" width="15" height="15" rx="2"/><rect x="182" y="60" width="15" height="15" rx="2"/><rect x="220" y="60" width="15" height="15" rx="2"/><rect x="258" y="60" width="15" height="15" rx="2"/><rect x="30" y="94" width="15" height="15" rx="2"/><rect x="68" y="94" width="15" height="15" rx="2"/><rect x="106" y="94" width="15" height="15" rx="2"/><rect x="144" y="94" width="15" height="15" rx="2"/><rect x="182" y="94" width="15" height="15" rx="2"/><rect x="220" y="94" width="15" height="15" rx="2"/><rect x="258" y="94" width="15" height="15" rx="2"/><rect x="30" y="128" width="15" height="15" rx="2"/><rect x="68" y="128" width="15" height="15" rx="2"/><rect x="106" y="128" width="15" height="15" rx="2"/><rect x="144" y="128" width="15" height="15" rx="2"/><rect x="182" y="128" width="15" height="15" rx="2"/><rect x="220" y="128" width="15" height="15" rx="2"/><rect x="258" y="128" width="15" height="15" rx="2"/><rect x="30" y="162" width="15" height="15" rx="2"/><rect x="68" y="162" width="15" height="15" rx="2"/><rect x="106" y="162" width="15" height="15" rx="2"/><rect x="144" y="162" width="15" height="15" rx="2"/><rect x="182" y="162" width="15" height="15" rx="2"/><rect x="220" y="162" width="15" height="15" rx="2"/><rect x="258" y="162" width="15" height="15" rx="2"/><rect x="30" y="196" width="15" height="15" rx="2"/><rect x="68" y="196" width="15" height="15" rx="2"/><rect x="106" y="196" width="15" height="15" rx="2"/><rect x="144" y="196" width="15" height="15" rx="2"/><rect x="182" y="196" width="15" height="15" rx="2"/><rect x="220" y="196" width="15" height="15" rx="2"/><rect x="258" y="196" width="15" height="15" rx="2"/><rect x="30" y="230" width="15" height="15" rx="2"/><rect x="68" y="230" width="15" height="15" rx="2"/><rect x="106" y="230" width="15" height="15" rx="2"/><rect x="144" y="230" width="15" height="15" rx="2"/><rect x="182" y="230" width="15" height="15" rx="2"/><rect x="220" y="230" width="15" height="15" rx="2"/><rect x="258" y="230" width="15" height="15" rx="2"/><rect x="30" y="264" width="15" height="15" rx="2"/><rect x="68" y="264" width="15" height="15" rx="2"/><rect x="106" y="264" width="15" height="15" rx="2"/><rect x="144" y="264" width="15" height="15" rx="2"/><rect x="182" y="264" width="15" height="15" rx="2"/><rect x="220" y="264" width="15" height="15" rx="2"/><rect x="258" y="264" width="15" height="15" rx="2"/><rect x="30" y="298" width="15" height="15" rx="2"/><rect x="68" y="298" width="15" height="15" rx="2"/><rect x="106" y="298" width="15" height="15" rx="2"/><rect x="144" y="298" width="15" height="15" rx="2"/><rect x="182" y="298" width="15" height="15" rx="2"/><rect x="220" y="298" width="15" height="15" rx="2"/><rect x="258" y="298" width="15" height="15" rx="2"/><rect x="30" y="332" width="15" height="15" rx="2"/><rect x="68" y="332" width="15" height="15" rx="2"/><rect x="106" y="332" width="15" height="15" rx="2"/><rect x="144" y="332" width="15" height="15" rx="2"/><rect x="182" y="332" width="15" height="15" rx="2"/><rect x="220" y="332" width="15" height="15" rx="2"/><rect x="258" y="332" width="15" height="15" rx="2"/></g>
+            <g class="dia__on2"><rect x="144" y="94" width="15" height="15" rx="2"/><rect x="30" y="196" width="15" height="15" rx="2"/><rect x="220" y="230" width="15" height="15" rx="2"/><rect x="106" y="298" width="15" height="15" rx="2"/></g>
+            <g class="dia__scan"><path d="M182 44v320"/></g>
+            <g class="dia__brk"><path d="M18 60v289M18 60h8M18 349h8"/></g>
+          </svg>
+        </div>
+        <h3>Security Toolkit</h3>
+        <p class="card__tech">Python · Nmap · Scapy</p>
+        <p class="sc-body">Vulnerability scanning, packet sniffing and network monitoring
+          in one modular tool. Threat reports converge in under five minutes
+          across local subnets, with no single point of failure.</p>
+      </article>
+
+      <article class="card" id="dns">
+        <div class="card__shot" data-sc-tilt="5">
+          <svg class="dia" viewBox="0 0 320 400" role="img" aria-label="Diagram: one query travelling a short chain to a resolved location">
+            <rect class="dia__bg" x="0" y="0" width="320" height="400"/>
+            <g class="dia__dim"><path d="M40 140h240"/></g>
+            <g class="dia__node">
+              <rect x="30" y="130" width="20" height="20" rx="2"/>
+              <circle cx="110" cy="140" r="9"/><circle cx="170" cy="140" r="9"/><circle cx="230" cy="140" r="9"/>
+            </g>
+            <g class="dia__on">
+              <circle cx="272" cy="140" r="15"/>
+              <path d="M272 119v-9M272 171v9M251 140h-9M293 140h9"/>
+              <circle class="dia__dot" cx="272" cy="140" r="4"/>
+            </g>
+            <g class="dia__brk"><path d="M40 200h232M40 192v8M272 192v8"/></g>
+            <g class="dia__dim"><path d="M40 254h240M40 290h176M40 326h212M40 362h150"/></g>
+            <g class="dia__on"><path d="M40 254h62"/></g>
+          </svg>
+        </div>
+        <h3>DNS IP Checker</h3>
+        <p class="card__tech">Python · Requests · Geolocation API</p>
+        <p class="sc-body">Synchronous querying with error handling, validation and JSON
+          formatting. Location data resolves in under a second across global
+          queries, with no API timeout failures.</p>
+      </article>
+
+      <article class="card" id="sentinel-card">
+        <div class="card__shot" data-sc-tilt="5">
+          <svg class="dia" viewBox="0 0 320 400" role="img" aria-label="Diagram: several feeds converging into one store, and one daily brief out">
+            <rect class="dia__bg" x="0" y="0" width="320" height="400"/>
+            <g class="dia__feed">
+              <path d="M22 96C90 96 110 150 168 168"/>
+              <path d="M22 144C90 144 118 158 168 168"/>
+              <path d="M22 192C90 192 118 178 168 168"/>
+              <path d="M22 240C90 240 110 190 168 168"/>
+            </g>
+            <g class="dia__node">
+              <circle cx="22" cy="96" r="5"/><circle cx="22" cy="144" r="5"/>
+              <circle cx="22" cy="192" r="5"/><circle cx="22" cy="240" r="5"/>
+            </g>
+            <g class="dia__on"><circle cx="168" cy="168" r="14"/><circle class="dia__dot" cx="168" cy="168" r="5"/></g>
+            <g class="dia__dim"><path d="M182 178 236 268"/></g>
+            <rect class="dia__doc" x="200" y="272" width="86" height="96" rx="3"/>
+            <g class="dia__dim"><path d="M214 296h58M214 314h58M214 332h38"/></g>
+            <g class="dia__on"><path d="M214 350h24"/></g>
+          </svg>
+        </div>
+        <h3>Security Sentinel</h3>
+        <p class="card__tech">Next.js · TypeScript · Tailwind</p>
+        <p class="sc-body">The threat intelligence dashboard above. STIX 2.1 over TAXII
+          2.1, normalised and searchable, with a local model writing the daily
+          brief and nothing leaving the host.</p>
+      </article>
+
+      <div class="rail__end">
+        <p class="stamp">Also</p>
+        <p class="sc-body">Two hackathon wins in 2026: Best Idea at RLC Hacks for Resera,
+          and Cyber Pulse. Five hackathons entered. NCL Cyber League CTF,
+          70th percentile.</p>
+        <p><a class="lnk" href="https://github.com/leo-malinen" rel="noopener">github.com/leo-malinen</a></p>
+        <p><a class="lnk" href="https://devpost.com/legendaryy" rel="noopener">devpost.com/legendaryy</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACT 6 · RECORD ═══ resolve ═══ pin, short ═══ the signature block ════
+     The page stops moving and states facts. Cues hold, so the last screen
+     still has something on it. The city is fully lit behind this. -->
+<section id="record" class="act act--close" data-sc-act="pin" data-sc-span="1.2" data-sc-drift="#070A0F">
+  <div data-sc-stage class="close">
+    <div class="close__in">
+      <div class="close__rec" data-sc-cue="0 1 0 0">
+        <p class="stamp">The record</p>
+        <dl class="rec">
+          <div><dt>Workada</dt><dd>Machine Learning Data Specialist</dd><dd class="rec__t">Aug 2026 to now</dd></div>
+          <div><dt>iD Tech</dt><dd>Instructor</dd><dd class="rec__t">Jun 2026 to Aug 2026</dd></div>
+        </dl>
+      </div>
+      <div class="close__ask" data-sc-cue="0.10">
+        <h2 class="sc-display sc-display--lg">The city is on.<br>Say hello.</h2>
+        <a class="btn btn--big" href="mailto:leomalinen@proton.me" data-sc-rise="0">Get in touch</a>
+        <p class="close__addr"><a href="mailto:leomalinen@proton.me">leomalinen@proton.me</a></p>
+      </div>
+    </div>
+    <footer class="foot" data-sc-cue="0.14">
+      <p>Leo Malinen, 2026.</p>
+      <p><a href="https://github.com/leo-malinen" rel="noopener">GitHub</a>
+         <a href="https://devpost.com/legendaryy" rel="noopener">Devpost</a></p>
+    </footer>
+  </div>
+</section>
+
+</main>
+
+<script src="scrollcraft.js"></script>
+<script src="sweep.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+</body>
+</html>

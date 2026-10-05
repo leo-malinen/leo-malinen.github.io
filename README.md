@@ -1,3 +1,3 @@
 # Domain: leomalinen.us.ci
 
-## Changes in progress
+## Changes soon made

@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Leo Malinen</title>
+<meta name="description" content="Leo Malinen builds threat intelligence tooling, computer vision, and network analysis. B.S. Computer Science, May 2027.">
+<!-- The mark, on the dark tile a tab icon needs so it reads against both a
+     light and a dark browser chrome. Three stroke passes, widest and dimmest
+     first, are the neon bloom: a tab icon gets no CSS, so the glow has to be
+     in the geometry. The inner 7 is deliberately not here. A favicon is seen
+     at 16px, where a third nested level stops being a 7 and becomes a blur in
+     the middle of the triangle; the bar mark carries it at 25px instead. -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23070A0F'/><g fill='none' stroke-linejoin='round'><g stroke='%233A3AFF' stroke-width='8' opacity='.3'><path d='M9.3 13.9H54.7L32 50.5Z'/><path d='M23 20.9H41L32 34.4Z'/></g><g stroke='%235B5BFF' stroke-width='4'><path d='M9.3 13.9H54.7L32 50.5Z'/><path d='M23 20.9H41L32 34.4Z'/></g><g stroke='%23BEBEFF' stroke-width='1.3'><path d='M9.3 13.9H54.7L32 50.5Z'/><path d='M23 20.9H41L32 34.4Z'/></g></g></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+
+<a class="skip" href="#top">Skip to content</a>
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<!-- ══ THE CITY ══════════════════════════════════════════════════════════════
+     One place, fixed for the whole page. Sections cut over it. Its planes move
+     at different rates from page scroll, its lights are revealed by the sweep,
+     and it never reloads or duplicates. Everything here is Leo's own render. -->
+<div class="city" aria-hidden="true" data-city>
+  <div class="city__plate" data-plane="plate">
+    <picture>
+      <source media="(max-width: 720px)" srcset="assets/hero-city-m.webp">
+      <img class="city__img" src="assets/hero-city.webp" width="2560" height="1600" alt="">
+    </picture>
+    <picture>
+      <source media="(max-width: 720px)" srcset="assets/hero-lights-m.webp">
+      <img class="city__lights" src="assets/hero-lights.webp" width="2560" height="1600" alt="">
+    </picture>
+  </div>
+  <img class="city__haze" data-plane="haze" src="assets/hero-haze.webp" width="2560" height="520" alt="">
+  <picture>
+    <source media="(max-width: 720px)" srcset="assets/hero-near-m.webp">
+    <img class="city__near" data-plane="near" src="assets/hero-near.webp" width="2560" height="340" alt="">
+  </picture>
+  <div class="city__scan" data-scan></div>
+  <div class="city__veil"></div>
+</div>
+
+
+<header class="bar">
+  <a class="mark" href="#top" aria-label="Leo Malinen, back to top">
+    <!-- The mark: a 7 inside two nested inverted triangles, traced from the
+         neon original. Vector rather than the source JPG because the bar is
+         translucent over the city, and a JPG would bring its black ground
+         with it as a visible tile. Geometry is the original's, squared up to
+         one vertical axis; the original's render is a degree or two off. -->
+    <svg class="mark__glyph" viewBox="0 0 64 64" aria-hidden="true">
+      <path class="mark__out" d="M5 10.5H59L32 54Z"/>
+      <path class="mark__in" d="M21.3 18.8H42.7L32 34.8Z"/>
+      <!-- The 7's tail stops at 31.8 rather than running to 34.4, where the
+           original puts it. At 27px the faithful version lands the tail on
+           the inner triangle's own apex and the two fuse into one blob; a
+           couple of units of daylight is the difference between reading a 7
+           and reading a smudge. -->
+      <path class="mark__7" d="M28.4 21.4H38.9L32.6 31.8"/>
+    </svg>
+    <span class="mark__name">Leo Malinen</span>
+  </a>
+  <nav class="bar__nav" aria-label="Sections of this page">
+    <a href="#skills">Skills</a>
+    <a href="#sentinel">Sentinel</a>
+    <a href="#code">Code</a>
+    <a href="#record">Record</a>
+  </nav>
+  <a class="btn btn--bar" href="mailto:leomalinen@proton.me">Get in touch</a>
+  <!-- The descent readout. A dossier's chrome is about how much you have been
+       shown, so the bar carries how far down the file you are. -->
+  <span class="bar__meter" aria-hidden="true"></span>
+</header>
+
+
+
+
+<main id="top">
+
+<!-- ══ ACT 1 · ARRIVAL ═══ anticipation ═══ flow + parallax + the sweep ══════
+     Deliberately NOT pinned. The planes separate as the page travels past. -->
+<section class="act act--hero" data-sc-act="flow" data-sc-span="1.6" data-hero>
+  <div class="hero">
+    <p class="stamp stamp--hero">B.S. Computer Science, May 2027</p>
+    <h1 class="hero__h">Leo<br>Malinen</h1>
+    <p class="hero__lede">Software engineering, security, and data. I build the part
+      that decides what matters.</p>
+    <p class="hero__do">
+      <a class="btn" href="mailto:leomalinen@proton.me">Get in touch</a>
+      <a class="lnk" href="#skills">See the work</a>
+    </p>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ═══ not an act. The one thing on the page that moves without
+     being asked to, which is what makes everything below it read as the
+     visitor's own doing rather than the page's. ═══════════════════════════ -->
+<section class="strip" aria-label="Tools and languages">
+  <div class="strip__row" data-marquee>
+    <div class="strip__track">
+      <span>Python</span><span>TypeScript</span><span>JavaScript</span><span>C++</span><span>C</span><span>Java</span><span>R</span><span>PowerShell</span><span>HTML / CSS</span><span>SQL</span>
+      <span>Python</span><span>TypeScript</span><span>JavaScript</span><span>C++</span><span>C</span><span>Java</span><span>R</span><span>PowerShell</span><span>HTML / CSS</span><span>SQL</span>
+    </div>
+  </div>
+  <div class="strip__row strip__row--back" data-marquee>
+    <div class="strip__track">
+      <span>React</span><span>Next.js</span><span>Node.js</span><span>FastAPI</span><span>PyTorch</span><span>Pandas</span><span>OpenCV</span><span>Tailwind</span><span>Docker</span><span>Kubernetes</span><span>Nmap</span><span>Scapy</span><span>Ollama</span><span>Git</span>
+      <span>React</span><span>Next.js</span><span>Node.js</span><span>FastAPI</span><span>PyTorch</span><span>Pandas</span><span>OpenCV</span><span>Tailwind</span><span>Docker</span><span>Kubernetes</span><span>Nmap</span><span>Scapy</span><span>Ollama</span><span>Git</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACT 2 · ORIENTATION ═══ recognition ═══ pin + kinetic ════════════════
+     Three disciplines arriving one at a time is an argument, and an argument
+     wants a held frame. Ground is already there, so no empty-stage window. -->
+<section id="skills" class="act" data-sc-act="pin" data-sc-span="2" data-sc-drift="#080C12">
+  <div data-sc-stage class="three">
+    <p class="stamp" data-sc-cue="0 1 0 0.06">Three things, one habit</p>
+    <div class="three__set">
+      <article class="three__i" data-sc-cue="0 1 0 0.06">
+        <h2 class="sc-display sc-display--md" data-sc-kinetic="lines">Engineering</h2>
+        <p class="sc-body">Python, TypeScript, React, FastAPI, Node. Four projects that
+          run on a machine rather than four that demo well.</p>
+      </article>
+      <article class="three__i" data-sc-cue="0.26 1 0.16 0.06">
+        <h2 class="sc-display sc-display--md">Security</h2>
+        <p class="sc-body">STIX and TAXII feeds, packet capture, port scanning, payload
+          inspection. Tooling I wrote because I wanted to see what was actually
+          on the wire.</p>
+      </article>
+      <article class="three__i" data-sc-cue="0.52 1 0.16 0.06">
+        <h2 class="sc-display sc-display--md">Data</h2>
+        <p class="sc-body">Annotation pipelines, rubric grading, cross-validation
+          against automated scripts. The unglamorous half of machine learning,
+          done properly.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACT 3 · NOISE ═══ unease ═══ reveal (iris, the only one on the page) ══
+     No photograph here on purpose: the page needs one non-city surface. The
+     ground is a plotted field of observations: a few thousand of them, almost
+     all dim, a handful that are not. It states the line before the line does.
+     Ends on authored silence. -->
+<section class="act act--noise" data-sc-act="flow" data-sc-span="1.4" data-sc-drift="#05070B">
+  <div class="noise">
+    <canvas class="noise__field" aria-hidden="true" data-field></canvas>
+    <!-- The iris is full-bleed and reveals a CLEARING, not the type. The line
+         is a sibling above it, brought up from the act's own --sc-p, so it
+         fades in inside an already-open space and is never cut mid-word. -->
+    <div class="noise__clear" data-sc-reveal="iris" data-sc-reveal-at="0.14 0.52" aria-hidden="true"></div>
+    <div class="noise__cut">
+      <p class="sc-lede noise__line">Most of it is nothing.<br>
+        <em>The job is knowing which part isn't.</em></p>
+    </div>
+  </div>
+  <div class="noise__hold" aria-hidden="true"></div>
+</section>
+
+<!-- ══ ACT 4 · RESOLUTION ═══ clarity ═══ PEAK ═══ pin + count ══════════════
+     Largest span on the page by 0.6. The city reaches full illumination here.
+     Every figure below is on the resume; nothing is invented, and the project
+     without measured figures does not get a counter. -->
+<section id="sentinel" class="act" data-sc-act="pin" data-sc-span="3.4" data-sc-drift="#0A1018">
+  <div data-sc-stage class="peak">
+    <div class="peak__head" data-sc-cue="0 0.30 0">
+      <p class="stamp">Project · self hosted</p>
+      <h2 class="sc-display sc-display--lg" data-sc-kinetic="lines">Security Sentinel</h2>
+      <p class="peak__tech">Next.js · TypeScript · Tailwind CSS · Ollama</p>
+    </div>
+    <div class="peak__body" data-sc-cue="0.22 0.56">
+      <p class="sc-body">It ingests STIX 2.1 indicators from TAXII 2.1 feeds, normalises
+        them into one searchable store, and surfaces what is trending across
+        sources rather than within any single one.</p>
+      <p class="sc-body">A local Ollama model runs on a daily schedule and summarises the
+        highest signal activity into a morning intel brief. Every byte of
+        data and every token of inference stays on the machine it belongs to.</p>
+    </div>
+    <div class="peak__nums" data-sc-cue="0.48 0.82 0.14 0.1">
+      <p class="stamp">Measured, across the four projects</p>
+      <dl class="nums">
+        <div><dt>CPU reduction, gesture pipeline</dt>
+          <dd class="sc-nums"><span data-sc-count="0 40" data-sc-count-at="0.52 0.66">0</span>%</dd></div>
+        <div><dt>Threat report convergence, local subnets</dt>
+          <dd class="sc-nums">under <span data-sc-count="0 5" data-sc-count-at="0.54 0.68">0</span> min</dd></div>
+        <div><dt>Geolocation resolve, global queries</dt>
+          <dd class="sc-nums">under <span data-sc-count="0 1" data-sc-count-at="0.56 0.70">0</span> sec</dd></div>
+      </dl>
+    </div>
+    <!-- The peak's actual peak. Copy clears, the sweep completes, and the city
+         is the only thing on the screen but one line. This is the moment the
+         tell-someone sentence in BRIEF.md promises. -->
+    <p class="peak__lit" data-sc-cue="0.78 1 0.08 0.04">Built to run unattended.</p>
+  </div>
+</section>
+
+<!-- ══ ACT 5 · THE SOURCE ═══ invitation ═══ pin ════════════════════════════
+     A rail of project cards used to run here. Cards describe; this asks for
+     the click, and gives it one target instead of four. The grid inside the
+     panel lights left to right under the same sweep that lights the city, so
+     the section makes the page's own argument in miniature: the dark part
+     resolves once something passes over it. Every measured figure those cards
+     carried is already stated in act 4, so nothing leaves the page with them. -->
+<section id="code" class="act" data-sc-act="pin" data-sc-span="2" data-sc-drift="#080B11">
+  <div data-sc-stage class="src">
+    <!-- One cue for the whole composition, present at p=0, the way act 2 and
+         act 4 open. The bar links here and a nav jump lands exactly on p=0, so
+         anything that ramps in is still blank when the visitor arrives and has
+         to be scrolled for. Staggering the panel in after the heading cost
+         exactly that: a jump to #code landed on half an empty screen, with the
+         one control the section exists for still at zero. The motion this act
+         is carried by is the grid lighting anyway, which is scrubbed from the
+         same progress and reads the whole way through. -->
+    <div class="src__in" data-sc-cue="0 1 0 0.06">
+
+      <div class="src__say">
+        <p class="stamp">The source</p>
+        <h2 class="sc-display sc-display--lg" data-sc-kinetic="lines">Read the code, not the claim.</h2>
+        <p class="sc-body">Everything on this page is public. Clone it, run it, and
+          check the commits against what I said it does.</p>
+        <p class="src__also">Two hackathon wins in 2026: Best Idea at RLC Hacks for
+          Resera, and Cyber Pulse. Five hackathons entered. NCL Cyber League CTF,
+          70th percentile. <a class="lnk" href="https://devpost.com/legendaryy" rel="noopener">devpost.com/legendaryy</a></p>
+      </div>
+
+      <!-- One target. The cue rides .src__in and the tilt rides the anchor,
+           because both write transform and the engine would otherwise have the
+           two fighting over the same property every frame. -->
+      <a class="src__card" href="https://github.com/leo-malinen?tab=repositories"
+         rel="noopener" data-sc-tilt="4" data-sc-spotlight>
+        <div class="src__top">
+          <svg class="src__glyph" viewBox="0 0 28 28" aria-hidden="true">
+            <path class="src__trunk" d="M9 8.6v11.8"/>
+            <path class="src__br" d="M9 9c0 4.5 11 .5 11 5.5"/>
+            <path class="src__br" d="M20 14.5c0 5-11 1-11 5.5"/>
+            <circle class="src__nd" cx="9" cy="6" r="2.6"/>
+            <circle class="src__nd" cx="20" cy="14.5" r="2.6"/>
+            <circle class="src__nd src__nd--on" cx="9" cy="23" r="2.6"/>
+          </svg>
+          <p class="src__host">github.com<span>/</span>leo-malinen</p>
+        </div>
+
+        <!-- Decorative, and deliberately not labelled as anything countable:
+             it is the city's lights on a smaller grid, not a statistic. -->
+        <div class="src__lights" aria-hidden="true">
+          <svg class="src__dim" viewBox="0 0 257 67" preserveAspectRatio="none">
+            <defs>
+              <pattern id="cell" width="10" height="10" patternUnits="userSpaceOnUse">
+                <rect width="7" height="7" rx="1.5"/>
+              </pattern>
+            </defs>
+            <rect width="257" height="67" fill="url(#cell)"/>
+          </svg>
+          <svg class="src__on" viewBox="0 0 257 67" preserveAspectRatio="none">
+            <g class="src__lit">
+              <rect x="0" y="30"/><rect x="20" y="10"/><rect x="30" y="50"/><rect x="50" y="20"/>
+              <rect x="60" y="40"/><rect x="70" y="0"/><rect x="80" y="30"/><rect x="90" y="60"/>
+              <rect x="100" y="20"/><rect x="110" y="40"/><rect x="120" y="10"/><rect x="120" y="50"/>
+              <rect x="130" y="30"/><rect x="140" y="0"/><rect x="150" y="20"/><rect x="160" y="50"/>
+              <rect x="170" y="10"/><rect x="180" y="0"/><rect x="180" y="40"/><rect x="190" y="60"/>
+              <rect x="200" y="50"/><rect x="210" y="30"/><rect x="220" y="0"/><rect x="220" y="40"/>
+              <rect x="230" y="60"/><rect x="240" y="10"/><rect x="240" y="50"/><rect x="250" y="0"/>
+              <rect x="250" y="40"/>
+            </g>
+            <g class="src__lit src__hot">
+              <rect x="140" y="40"/><rect x="170" y="30"/><rect x="190" y="20"/>
+              <rect x="200" y="10"/><rect x="230" y="20"/><rect x="240" y="30"/>
+              <rect x="250" y="20"/>
+            </g>
+          </svg>
+          <span class="src__scan"></span>
+        </div>
+
+        <ul class="src__repos">
+          <li><span class="src__rn">Security Sentinel</span><span class="src__rl">TypeScript</span></li>
+          <li><span class="src__rn">Security Toolkit</span><span class="src__rl">Python</span></li>
+          <li><span class="src__rn">Gesture Control</span><span class="src__rl">Python</span></li>
+          <li><span class="src__rn">DNS IP Checker</span><span class="src__rl">Python</span></li>
+        </ul>
+
+        <p class="src__go">
+          <span>Browse the repositories</span>
+          <svg class="src__arr" viewBox="0 0 26 10" aria-hidden="true">
+            <path d="M0 5h20M16.5 1.5 20 5l-3.5 3.5"/>
+          </svg>
+        </p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACT 6 · RECORD ═══ resolve ═══ pin, short ═══ the signature block ════
+     The page stops moving and states facts. Cues hold, so the last screen
+     still has something on it. The city is fully lit behind this. -->
+<section id="record" class="act act--close" data-sc-act="pin" data-sc-span="1.2" data-sc-drift="#070A0F">
+  <div data-sc-stage class="close">
+    <div class="close__in">
+      <div class="close__rec" data-sc-cue="0 1 0 0">
+        <p class="stamp">The record</p>
+        <dl class="rec">
+          <div><dt>Workada</dt><dd>Machine Learning Data Specialist</dd><dd class="rec__t">Aug 2026 to now</dd></div>
+          <div><dt>iD Tech</dt><dd>Instructor</dd><dd class="rec__t">Jun 2026 to Aug 2026</dd></div>
+        </dl>
+      </div>
+      <div class="close__ask" data-sc-cue="0.10">
+        <h2 class="sc-display sc-display--lg">The city is on.<br>Say hello.</h2>
+        <a class="btn btn--big" href="mailto:leomalinen@proton.me" data-sc-rise="0">Get in touch</a>
+        <p class="close__addr"><a href="mailto:leomalinen@proton.me">leomalinen@proton.me</a></p>
+      </div>
+    </div>
+    <footer class="foot" data-sc-cue="0.14">
+      <p>Leo Malinen, 2026.</p>
+      <p><a href="https://github.com/leo-malinen" rel="noopener">GitHub</a>
+         <a href="https://devpost.com/legendaryy" rel="noopener">Devpost</a></p>
+    </footer>
+  </div>
+</section>
+
+</main>
+
+<script src="scrollcraft.js"></script>
+<script src="sweep.js"></script>
+<script>
+/* The source act pins on a desktop, because holding the frame is what gives
+   its grid time to light. A pinned stage is exactly one viewport and cannot
+   scroll, though, and on a short handset that act's stack (heading, body, the
+   note, the panel) is taller than one: it would centre itself off both ends of
+   the screen and take the call to action off the bottom with it. Every other
+   act on the page fits, so this is the one that asks for the other mode rather
+   than for its content to be cut down to the device. Flow keeps the same copy,
+   the same cues and the same sweep, and lets the section scroll like a section.
+   Set before mount, because the engine reads the device once, at mount. The
+   width here is the width at which the act stops being two columns, and the
+   two have to agree: a stacked stack is the tall one, so stacked and pinned is
+   exactly the combination that clips. Keep them in step with page.css. */
+if (matchMedia('(max-width: 1000px)').matches) {
+  var srcAct = document.getElementById('code');
+  if (srcAct) { srcAct.setAttribute('data-sc-act', 'flow'); srcAct.removeAttribute('data-sc-span'); }
+}
+ScrollCraft.mount(document.body);
+</script>
+</body>
+</html>

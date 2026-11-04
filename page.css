@@ -1,0 +1,535 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   blue-hour · Leo Malinen
+   Theme is six colours and two faces. Everything structural lives in
+   scrollcraft.css and is never restyled here.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --sc-canvas:     #070A0F;
+  --sc-surface:    #0E141C;
+  --sc-ink:        #E8EDF4;
+  --sc-ink-soft:   #8A97A8;
+  --sc-accent:     #FFB35C;
+  --sc-accent-ink: #1A1006;
+
+  --sc-font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --sc-font-text:    "Geist", ui-sans-serif, system-ui, sans-serif;
+  --sc-font-mono:    "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Page-owned, written by sweep.js */
+  --lit: 0;        /* sweep progress, 0 to 1 */
+  --scan-o: 0;     /* scan line visibility */
+  --city-o: 1;     /* how present the photograph is */
+  --plate-y: 0px;
+  --haze-y: 0px;
+  --near-y: 0px;
+
+  /* The third ink step, tinted from the ground rather than flat grey, and a
+     token so the same value cannot drift between the footer, the record and
+     the marquee's back row. Measured at 5.2:1 on the darkest ground. */
+  --ink-faint: #8795A6;
+
+  --edge: rgba(232,237,244,0.10);
+  --edge-2: rgba(232,237,244,0.18);
+
+  /* The mark. Sampled off the neon original: a near-white core at the hottest
+     points (#BEBEFF), a saturated blue body, and a deep blue bloom. Kept as
+     its own small set rather than folded into the six, because the mark is
+     the one thing on the page that is not in the amber key and should stay
+     separable from it. */
+  --logo:       #5B5BFF;
+  --logo-core:  #BEBEFF;
+  --logo-glow:  rgba(91,91,255,0.75);
+  --logo-bloom: rgba(60,60,255,0.45);
+}
+
+body { background: var(--sc-canvas); }
+
+.skip {
+  position: fixed; top: 0; left: 0; z-index: 90;
+  transform: translateY(-120%);
+  background: var(--sc-accent); color: var(--sc-accent-ink);
+  padding: .7rem 1.1rem; font: 500 .85rem/1 var(--sc-font-text);
+  border-radius: 0 0 4px 0;
+}
+.skip:focus-visible { transform: translateY(0); }
+
+/* ── THE CITY ─────────────────────────────────────────────────────────────
+   One fixed place. Planes translate at different rates; nothing re-renders. */
+.city {
+  position: fixed; inset: 0; z-index: 0;
+  overflow: hidden;
+  opacity: var(--city-o);
+  will-change: opacity;
+  pointer-events: none;
+}
+.city__plate { position: absolute; inset: 0; }
+.city__plate {
+  transform: translate3d(0, var(--plate-y), 0) scale(1.06);
+  transform-origin: 50% 50%;
+}
+.city__img, .city__lights {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 50%;
+  max-width: none;
+}
+/* The sweep. A soft leading edge walks left to right and the lights it has
+   passed stay on for the rest of the page. */
+.city__lights {
+  mix-blend-mode: screen;
+  opacity: 1;
+  -webkit-mask-image: linear-gradient(93deg,
+      #000 0%,
+      #000 calc(var(--lit) * 120% - 11%),
+      rgba(0,0,0,.45) calc(var(--lit) * 120% - 3%),
+      rgba(0,0,0,0) calc(var(--lit) * 120% + 6%),
+      rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(93deg,
+      #000 0%,
+      #000 calc(var(--lit) * 120% - 11%),
+      rgba(0,0,0,.45) calc(var(--lit) * 120% - 3%),
+      rgba(0,0,0,0) calc(var(--lit) * 120% + 6%),
+      rgba(0,0,0,0) 100%);
+}
+.city__haze {
+  position: absolute; left: 0; width: 100%; max-width: none;
+  top: 46%; height: auto;
+  transform: translate3d(0, var(--haze-y), 0);
+  opacity: .8;
+}
+.city__near {
+  position: absolute; left: 0; bottom: -3%;
+  width: 100%; height: auto; max-width: none;
+  transform: translate3d(0, var(--near-y), 0);
+}
+.city__scan {
+  position: absolute; top: -5%; bottom: -5%;
+  left: calc(var(--lit) * 120% - 4%);
+  width: 2px;
+  background: linear-gradient(to bottom,
+      transparent, rgba(255,179,92,.7) 22%, rgba(255,214,166,.95) 50%, rgba(255,179,92,.7) 78%, transparent);
+  box-shadow: 0 0 34px 6px rgba(255,179,92,.20);
+  opacity: var(--scan-o);
+}
+/* Density where the hero copy sits, and a floor so the planes never show a
+   clip line. Not a full-frame overlay: it is a corner and a floor. */
+.city__veil {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(115% 110% at 6% 84%, rgba(5,7,11,.93) 0%, rgba(5,7,11,.66) 30%, rgba(5,7,11,.22) 54%, rgba(5,7,11,0) 72%),
+    linear-gradient(to top, var(--sc-canvas) 0%, rgba(7,10,15,.55) 9%, rgba(7,10,15,0) 24%);
+}
+
+/* ── BAR ──────────────────────────────────────────────────────────────────
+   Does not invert: the ground is dark the whole way down. Carries a descent
+   readout instead, because a dossier's chrome is about how much you've seen. */
+.bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+  display: flex; align-items: center; gap: var(--sc-5);
+  padding: .95rem var(--sc-gutter);
+  background: linear-gradient(to bottom, rgba(5,7,11,.86), rgba(5,7,11,.42) 62%, rgba(5,7,11,0));
+  backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px);
+}
+.mark { display: flex; align-items: center; gap: .62rem; margin-right: auto; }
+/* 27px, not the 19 the old checker sat at. The mark is three nested levels
+   deep, which is two more than a bar glyph usually survives: checked against
+   the original at 20, 24, 28, 32 and 44, the 7 stops reading below about 26.
+   An open outline is also visually lighter than four solid squares, so it
+   can take the extra size without weighing more. overflow is visible so the
+   glow is not clipped to the viewBox. */
+.mark__glyph {
+  width: 27px; height: 27px; flex: none; overflow: visible;
+  filter: drop-shadow(0 0 2px var(--logo-glow)) drop-shadow(0 0 6px var(--logo-bloom));
+}
+/* Each level is named rather than reached for positionally: a `path + path`
+   sibling rule outranks a single class, so it silently took the 7's weight
+   with it and the three levels all came out the same. */
+.mark__glyph path {
+  fill: none; stroke: var(--logo);
+  stroke-linejoin: round; stroke-linecap: round;
+}
+.mark__out { stroke-width: 2.8; }
+.mark__in  { stroke-width: 2.4; }
+.mark__7   { stroke-width: 2.2; }
+/* A hair brighter on approach, the way a neon tube sits up when you look at
+   it. The whole bar is the link, so this fires from the name too. */
+.mark:hover .mark__glyph { filter: drop-shadow(0 0 3px var(--logo-glow)) drop-shadow(0 0 9px var(--logo-bloom)); }
+.mark:hover .mark__glyph path { stroke: var(--logo-core); }
+.mark__name {
+  font: 600 .93rem/1 var(--sc-font-display);
+  letter-spacing: -.012em; color: var(--sc-ink);
+}
+.bar__nav { display: flex; gap: var(--sc-5); }
+.bar__nav a {
+  font: 400 .87rem/1 var(--sc-font-text);
+  color: var(--sc-ink-soft);
+  padding: .3rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color .16s var(--sc-ease-out), border-color .16s var(--sc-ease-out);
+}
+.bar__nav a:hover, .bar__nav a.is-here { color: var(--sc-ink); border-bottom-color: var(--sc-accent); }
+.bar__meter {
+  position: absolute; left: 0; bottom: 0; height: 1px;
+  width: 100%;
+  transform: scaleX(var(--descent, 0)); transform-origin: 0 50%;
+  background: linear-gradient(to right, rgba(255,179,92,.35), var(--sc-accent));
+}
+
+/* ── BUTTONS AND LINKS ────────────────────────────────────────────────────
+   The engine themes the underline but does not remove it, which is right for
+   running prose and wrong for chrome. Anything that draws its own rule or is
+   a button opts out; body links keep the underline. */
+.mark, .bar__nav a, .btn, .lnk, .foot a, .close__addr a, .src__card { text-decoration: none; }
+.btn {
+  display: inline-block;
+  background: var(--sc-accent); color: var(--sc-accent-ink);
+  font: 600 .92rem/1 var(--sc-font-text); letter-spacing: -.005em;
+  padding: .86rem 1.35rem; border-radius: 4px;
+  transition: transform .13s var(--sc-ease-out), background-color .16s var(--sc-ease-out);
+}
+.btn:hover { background: #FFC483; }
+.btn:active { transform: translateY(1px); }
+.btn--bar { padding: .62rem 1rem; font-size: .84rem; }
+.btn--big { padding: 1.05rem 1.9rem; font-size: 1.02rem; }
+.lnk {
+  font: 400 .92rem/1.4 var(--sc-font-text); color: var(--sc-ink);
+  border-bottom: 1px solid var(--edge-2);
+  padding-bottom: 2px;
+  transition: border-color .16s var(--sc-ease-out), color .16s var(--sc-ease-out);
+}
+.lnk:hover { border-bottom-color: var(--sc-accent); color: var(--sc-accent); }
+
+.stamp {
+  /* fit-content, so the element's box is its ink. A full-width box makes a
+     contrast measurement grade photograph the text never sits on. */
+  width: fit-content;
+  font: 500 .70rem/1.3 var(--sc-font-mono);
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--sc-accent);
+  display: flex; align-items: center; gap: .7rem;
+}
+.stamp::before {
+  content: ""; width: 1.6rem; height: 1px; flex: none;
+  background: var(--sc-accent); opacity: .7;
+}
+
+/* ── ACTS, shared ─────────────────────────────────────────────────────────*/
+main { position: relative; z-index: 2; pointer-events: none; }
+main > * { pointer-events: auto; }
+/* The hero is mostly empty frame. Let the pointer reach the lights behind it,
+   while the copy block itself stays a normal target. Everywhere else content
+   wins, which is why a light never sits on top of a paragraph. */
+.act--hero { pointer-events: none; }
+.hero, .hero a { pointer-events: auto; }
+.act { position: relative; }
+.act [data-sc-stage] { display: grid; align-content: center; }
+
+/* ── ACT 1 · HERO ─────────────────────────────────────────────────────────*/
+.act--hero { min-height: 100svh; display: grid; align-items: end; }
+.hero {
+  position: relative; z-index: 1;
+  padding: 0 var(--sc-gutter) clamp(3.5rem, 11vh, 8rem);
+  max-width: 62rem;
+}
+.stamp--hero { margin-bottom: var(--sc-5); }
+.hero__h {
+  font-family: var(--sc-font-display);
+  font-weight: 500;
+  font-size: clamp(3.6rem, 11.5vw, 10.5rem);
+  line-height: .88;
+  letter-spacing: -.045em;
+  color: var(--sc-ink);
+  margin: 0 0 var(--sc-5);
+  text-wrap: balance;
+}
+.hero__lede {
+  font: 300 clamp(1.05rem, 1.9vw, 1.42rem)/1.5 var(--sc-font-text);
+  color: var(--sc-ink); max-width: 34ch;
+  margin: 0 0 var(--sc-5); text-wrap: pretty;
+}
+.hero__do { display: flex; align-items: center; gap: var(--sc-5); flex-wrap: wrap; margin: 0; }
+
+/* ── MARQUEE ──────────────────────────────────────────────────────────────
+   Runs on its own clock, and is the only thing on the page that does. Every
+   act below it moves on the visitor's hand; the contrast is the point. */
+.strip {
+  position: relative; z-index: 1;
+  padding: clamp(2.2rem,5vh,3.6rem) 0;
+  background: linear-gradient(to bottom, rgba(7,10,15,0), rgba(7,10,15,.92) 22%, rgba(7,10,15,.92) 78%, rgba(7,10,15,0));
+  border-block: 1px solid var(--edge);
+  display: grid; gap: .9rem;
+}
+.strip__row { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent); mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent); }
+.strip__track {
+  display: flex; align-items: center; gap: 2.6rem;
+  width: max-content;
+  animation: strip-run 44s linear infinite;
+}
+.strip__row--back .strip__track { animation-duration: 58s; animation-direction: reverse; }
+.strip__track span {
+  font: 400 clamp(.88rem,1.45vw,1.12rem)/1 var(--sc-font-mono);
+  letter-spacing: .07em; text-transform: uppercase;
+  color: var(--sc-ink-soft); white-space: nowrap;
+  display: flex; align-items: center; gap: 2.6rem;
+}
+.strip__track span::after {
+  content: ""; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--sc-accent); opacity: .55; flex: none;
+}
+.strip__row--back .strip__track span { color: var(--ink-faint); }
+@keyframes strip-run { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── ACT 2 · THREE ────────────────────────────────────────────────────────*/
+.three { min-height: 100svh; padding: var(--sc-section) var(--sc-gutter); gap: var(--sc-5); }
+.three .stamp { margin-bottom: var(--sc-5); }
+.three__set { display: grid; gap: clamp(1.6rem, 3.6vw, 3rem); grid-template-columns: repeat(3, 1fr); max-width: var(--sc-maxw); }
+.three__i h2 { margin: 0 0 .7rem; color: var(--sc-ink); }
+.three__i p { color: var(--sc-ink-soft); max-width: 34ch; margin: 0; }
+.three__i { border-top: 1px solid var(--edge); padding-top: var(--sc-5); }
+
+/* ── ACT 3 · NOISE ────────────────────────────────────────────────────────
+   The one surface on the page that is not the photograph. */
+.act--noise { position: relative; }
+.noise {
+  position: relative; min-height: 100svh;
+  display: grid; place-items: center;
+  padding: var(--sc-section) var(--sc-gutter);
+  background: radial-gradient(90% 70% at 50% 50%, rgba(5,7,11,.72), var(--sc-canvas) 78%);
+}
+.noise__field {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+  -webkit-mask-image: radial-gradient(86% 72% at 50% 50%, transparent 12%, #000 46%);
+  mask-image: radial-gradient(86% 72% at 50% 50%, transparent 12%, #000 46%);
+}
+/* The clearing the lens opens. Full-bleed, so the iris is a transition and
+   not a fidget. */
+.noise__clear {
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(closest-side circle at 50% 50%,
+      var(--sc-canvas) 0%, var(--sc-canvas) 52%, rgba(7,10,15,.86) 72%, rgba(7,10,15,0) 100%);
+}
+.noise__cut { position: relative; z-index: 2; line-height: 1; padding: 1.2rem 0; }
+/* Driven from the act's own progress rather than a cue, which keeps the type
+   out of the clip path entirely. opacity clamps on its own. */
+.noise__line { opacity: calc((var(--sc-p, 1) - 0.30) * 4); }
+@media (prefers-reduced-motion: reduce) { .noise__line { opacity: 1; } }
+.noise__line {
+  color: var(--sc-ink); text-align: center; margin: 0;
+  font-size: clamp(1.5rem, 4.2vw, 3.1rem); line-height: 1.22;
+  letter-spacing: -.022em; font-weight: 300;
+}
+.noise__line em { color: var(--sc-accent); font-style: italic; }
+/* Authored silence: the run-up to the peak. Documented in BRIEF.md so the
+   verification pass does not read it as dead scroll. */
+.noise__hold { height: 42vh; }
+
+/* ── ACT 4 · PEAK ─────────────────────────────────────────────────────────*/
+.peak {
+  min-height: 100svh; padding: var(--sc-section) var(--sc-gutter);
+  gap: var(--sc-5);
+  grid-template-columns: minmax(0,1fr);
+  align-content: center;
+  max-width: 78rem; margin-inline: auto;
+}
+.peak__head h2 { margin: .8rem 0 .5rem; color: var(--sc-ink); }
+.peak__tech { font: 400 .84rem/1.5 var(--sc-font-mono); color: var(--sc-ink-soft); letter-spacing: .04em; margin: 0; }
+.peak__body { display: grid; gap: 1.1rem; max-width: var(--sc-measure); }
+.peak__body p { color: var(--sc-ink); margin: 0; }
+.peak__nums { margin-top: var(--sc-5); }
+.peak__nums .stamp { margin-bottom: 1.1rem; }
+.nums { display: grid; gap: clamp(1.1rem, 3vw, 2.6rem); grid-template-columns: repeat(3, 1fr); margin: 0; }
+.nums div { border-top: 1px solid var(--edge); padding-top: .9rem; }
+.nums dt { font: 400 .82rem/1.45 var(--sc-font-text); color: var(--sc-ink-soft); margin-bottom: .35rem; max-width: 22ch; }
+.peak__lit {
+  font: 300 clamp(1.2rem, 2.6vw, 2.1rem)/1.3 var(--sc-font-display);
+  letter-spacing: -.022em; color: var(--sc-ink);
+  max-width: 24ch; margin: 0; text-wrap: balance;
+}
+.nums dd {
+  margin: 0; font-family: var(--sc-font-display); font-weight: 500;
+  font-size: clamp(1.9rem, 4vw, 3.1rem); line-height: 1; letter-spacing: -.035em;
+  color: var(--sc-accent); font-variant-numeric: tabular-nums;
+}
+
+/* ── ACT 5 · THE SOURCE ───────────────────────────────────────────────────
+   One panel and one target, where a rail of four cards used to be. The panel
+   is the only element on the page a visitor is asked to leave through, so it
+   is the only one that gets a lift, a pointer light and a moving edge. */
+.src { min-height: 100svh; padding: var(--sc-section) var(--sc-gutter); align-content: center; }
+.src__in {
+  display: grid; gap: clamp(2rem, 5vw, 4.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 31rem);
+  align-items: center;
+  max-width: var(--sc-maxw); margin-inline: auto; width: 100%;
+}
+.src__say { display: grid; gap: 1.05rem; align-content: center; }
+.src__say h2 { margin: .35rem 0 0; color: var(--sc-ink); }
+.src__also {
+  font: 400 .84rem/1.6 var(--sc-font-text);
+  color: var(--ink-faint); max-width: 46ch; margin: .3rem 0 0;
+}
+.src__also .lnk { font-size: .84rem; }
+
+/* The card. --g is the panel's own sweep: the act's progress, delayed until
+   the card has actually arrived and then run slightly fast so the grid is
+   fully lit before the act hands over. With no JS, --sc-p never gets written,
+   the fallback resolves --g past 1, and the panel renders fully lit, which is
+   the correct resting state rather than an empty grid. */
+.src__card {
+  --g: calc((var(--sc-p, 1) - 0.18) * 1.7);
+  position: relative; overflow: hidden;
+  display: grid; gap: 1.15rem;
+  padding: clamp(1.05rem, 2vw, 1.5rem);
+  border: 1px solid var(--edge); border-radius: 10px;
+  background: linear-gradient(158deg, rgba(20,28,40,.86), rgba(11,16,23,.93));
+  backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px);
+  box-shadow: 0 22px 60px -30px rgba(0,0,0,.9);
+  transition: border-color .22s var(--sc-ease-out), box-shadow .22s var(--sc-ease-out);
+}
+.src__card:hover { border-color: var(--edge-2); box-shadow: 0 30px 72px -28px rgba(0,0,0,1); }
+
+.src__top { display: flex; align-items: center; gap: .7rem; }
+.src__glyph { width: 30px; height: 30px; flex: none; }
+.src__trunk, .src__br, .src__nd { fill: none; stroke: var(--sc-ink-soft); stroke-width: 1.7; }
+.src__trunk, .src__br { opacity: .62; stroke-linecap: round; }
+.src__nd { opacity: .78; }
+.src__nd--on { fill: var(--sc-accent); stroke: var(--sc-accent); opacity: 1; }
+.src__host { font: 500 .92rem/1 var(--sc-font-mono); letter-spacing: .02em; color: var(--sc-ink); margin: 0; }
+.src__host span { color: var(--sc-accent); margin: 0 .08em; }
+
+/* The lights. Same mask shape as .city__lights, one act later and one tenth
+   the size: a soft leading edge walks left to right and what it has passed
+   stays on. Decorative on purpose, and never labelled, because a grid that
+   looks like a contribution graph but is not one would be a fabricated
+   statistic sitting next to real ones. */
+.src__lights { position: relative; width: 100%; aspect-ratio: 257 / 67; }
+.src__dim, .src__on { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.src__dim rect { fill: rgba(232,237,244,.09); }
+.src__lit rect { width: 7px; height: 7px; rx: 1.5px; fill: rgba(255,179,92,.42); }
+.src__hot rect { fill: var(--sc-accent); }
+.src__on {
+  -webkit-mask-image: linear-gradient(92deg,
+      #000 0%,
+      #000 calc(var(--g) * 126% - 10%),
+      rgba(0,0,0,.35) calc(var(--g) * 126% - 1%),
+      rgba(0,0,0,0) calc(var(--g) * 126% + 9%),
+      rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(92deg,
+      #000 0%,
+      #000 calc(var(--g) * 126% - 10%),
+      rgba(0,0,0,.35) calc(var(--g) * 126% - 1%),
+      rgba(0,0,0,0) calc(var(--g) * 126% + 9%),
+      rgba(0,0,0,0) 100%);
+}
+.src__scan {
+  position: absolute; top: -8%; bottom: -8%;
+  left: calc(var(--g) * 126% - 1%);
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(255,179,92,.9) 42%, rgba(255,179,92,.9) 58%, transparent);
+  box-shadow: 0 0 14px 3px rgba(255,179,92,.22);
+  /* Out of range at both ends: opacity clamps on its own, so the line is
+     absent before the sweep starts and gone once it has finished. */
+  opacity: calc((1 - var(--g)) * 2.2);
+}
+
+.src__repos { list-style: none; margin: 0; padding: 0; }
+.src__repos li {
+  display: flex; align-items: center; gap: .72rem;
+  border-top: 1px solid var(--edge); padding: .5rem 0;
+}
+.src__repos li::before {
+  content: ""; width: 5px; height: 5px; border-radius: 50%; flex: none;
+  background: var(--sc-accent); opacity: .6;
+}
+.src__rn { font: 400 .9rem/1.3 var(--sc-font-text); color: var(--sc-ink); margin-right: auto; }
+.src__rl { font: 400 .72rem/1.3 var(--sc-font-mono); letter-spacing: .05em; color: var(--ink-faint); }
+
+.src__go {
+  display: flex; align-items: center; gap: .8rem; margin: .2rem 0 0;
+  font: 600 .95rem/1 var(--sc-font-text); color: var(--sc-accent);
+}
+.src__arr { width: 26px; height: 10px; flex: none; transition: transform .22s var(--sc-ease-out); }
+.src__arr path { fill: none; stroke: var(--sc-accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.src__card:hover .src__arr { transform: translateX(5px); }
+
+/* ── ACT 6 · CLOSE ────────────────────────────────────────────────────────*/
+.close {
+  min-height: 100svh; padding: calc(var(--sc-section) * .8) var(--sc-gutter) 0;
+  grid-template-rows: 1fr auto;
+}
+.close__in {
+  display: grid; gap: clamp(2rem, 6vw, 5rem);
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+  align-items: center; align-content: center;
+  max-width: var(--sc-maxw); margin-inline: auto; width: 100%;
+}
+.rec { margin: 1.1rem 0 0; display: grid; gap: .95rem; }
+.rec div { border-top: 1px solid var(--edge); padding-top: .62rem; }
+.rec dt { font: 500 .96rem/1.3 var(--sc-font-display); color: var(--sc-ink); letter-spacing: -.012em; }
+.rec dd { margin: 0; font: 400 .86rem/1.45 var(--sc-font-text); color: var(--sc-ink-soft); }
+.rec__t { font-family: var(--sc-font-mono); font-size: .74rem; letter-spacing: .05em; color: var(--ink-faint); margin-top: .12rem; }
+.close__ask h2 { margin: 0 0 var(--sc-5); color: var(--sc-ink); }
+.close__addr { margin: 1rem 0 0; }
+.close__addr a {
+  font: 400 1rem/1.4 var(--sc-font-mono); color: var(--sc-ink-soft);
+  letter-spacing: .02em; border-bottom: 1px solid var(--edge-2); padding-bottom: 2px;
+}
+.close__addr a:hover { color: var(--sc-accent); border-bottom-color: var(--sc-accent); }
+.foot {
+  display: flex; justify-content: space-between; gap: var(--sc-5); flex-wrap: wrap;
+  border-top: 1px solid var(--edge);
+  padding: 1.15rem 0; margin-top: var(--sc-5);
+  max-width: var(--sc-maxw); margin-inline: auto; width: 100%;
+}
+.foot p { font: 400 .78rem/1.5 var(--sc-font-text); color: var(--ink-faint); margin: 0; }
+.foot a { color: var(--sc-ink-soft); margin-left: 1.1rem; }
+.foot a:first-child { margin-left: 0; }
+.foot a:hover { color: var(--sc-accent); }
+
+/* ── PHONE ────────────────────────────────────────────────────────────────
+   Art-directed, not shrunk: the hero steps down a rung, the grids unstack,
+   and the source panel goes under its own heading rather than beside it. */
+@media (max-width: 860px) {
+  .three__set { grid-template-columns: 1fr; }
+  .nums { grid-template-columns: 1fr; gap: 1.1rem; }
+  .close__in { grid-template-columns: 1fr; gap: 2.2rem; }
+}
+/* The source act stacks earlier than the rest. Two columns means the panel
+   takes a fixed 31rem and the copy takes what is left, and below about this
+   width what is left is too narrow a well for a display heading. Stacking it
+   is also what puts the act into flow mode: the mount script switches at this
+   same width, and the two must not drift apart, because stacked and pinned
+   together is the one combination that is taller than a viewport. */
+@media (max-width: 1000px) {
+  .src { min-height: 0; }
+  .src__in { grid-template-columns: 1fr; gap: 2.2rem; }
+}
+@media (max-width: 720px) {
+  .bar { gap: .8rem; padding: .8rem var(--sc-gutter); }
+  .bar__nav { display: none; }
+  .hero__h { font-size: clamp(3rem, 15vw, 4.6rem); }
+  .hero__lede { font-size: 1.02rem; max-width: 30ch; }
+  .hero__do { gap: 1rem; }
+  .src__say h2 { font-size: clamp(2.1rem, 10vw, 2.8rem); }
+  .noise__hold { height: 26vh; }
+  .strip__track { gap: 1.7rem; }
+  .strip__track span { gap: 1.7rem; }
+}
+
+/* ── REDUCED MOTION ───────────────────────────────────────────────────────
+   Fewer and gentler, not zero. The sweep resolves to a fully lit city so the
+   page still means what it meant; the planes stop travelling. */
+@media (prefers-reduced-motion: reduce) {
+  .city__plate, .city__haze, .city__near { transform: none; }
+  .city__lights { -webkit-mask-image: none; mask-image: none; }
+  .city__scan { display: none; }
+  .strip__track { animation: none; transform: none; }
+  .strip__row { overflow-x: auto; }
+  /* Same resolution as the city: the panel's grid arrives already lit rather
+     than withholding itself from a reader who asked for less movement. */
+  .src__card { --g: 1; }
+  .src__scan { display: none; }
+}

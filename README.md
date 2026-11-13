@@ -2,14 +2,6 @@
 
 ---
 
-Sections:
-
-1. 
-2. 
-3. 
-
----
-
 ## Hosting
 
 Served as-is by GitHub Pages. `.nojekyll` is present so Pages skips its Jekyll

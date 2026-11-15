@@ -18,4 +18,6 @@ Any static server. The page uses no APIs and no server side or anything.
 python -m http.server 8000
 ```
 
-Then open http://localhost:8000.
+Open http://localhost:8000.
+
+---

@@ -24,4 +24,4 @@ http://localhost:8000
 
 ## Pages
 
-Home, About, 
+Home
